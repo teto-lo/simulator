@@ -1,38 +1,34 @@
-<x-layouts.app>
-    <div class="bg-white p-8 rounded-2xl shadow-lg">
-        <h1 class="text-3xl font-bold mb-6 text-gray-800 border-b-2 border-indigo-500 pb-2">
-            プライバシーポリシー
-        </h1>
-        <p class="text-gray-700 leading-relaxed mb-4">
-            当サイト「広告費シミュレーター」では、ユーザーの個人情報を適切に管理し、
-            利用目的の範囲内でのみ使用します。
-        </p>
-        <h2 class="text-2xl font-bold mt-8 mb-3 text-indigo-700">1. 個人情報の利用目的</h2>
-        <p class="text-gray-700 mb-4">
-            お問い合わせ対応、サービス改善、利用状況の分析など、運営上必要な目的でのみ利用します。
-        </p>
-        <h2 class="text-2xl font-bold mt-8 mb-3 text-indigo-700">2. Cookieの使用</h2>
-        <p class="text-gray-700 mb-4">
-            当サイトはアクセス解析や広告配信の最適化のためにCookieを使用する場合があります。
-            Cookie情報は匿名で収集され、個人を特定するものではありません。
-        </p>
-        <h2 class="text-2xl font-bold mt-8 mb-3 text-indigo-700">3. Google Analytics について</h2>
-        <p class="text-gray-700 mb-4">
-            本サイトではGoogleによるアクセス解析ツール「Google Analytics」を使用しています。
-            このツールはトラフィックデータ収集のためにCookieを利用しています。
-        </p>
-        <h2 class="text-2xl font-bold mt-8 mb-3 text-indigo-700">4. 免責事項</h2>
-        <p class="text-gray-700 mb-4">
-            当サイトの情報利用によって発生した損害に対して、運営者は一切の責任を負いません。
-        </p>
-        <h2 class="text-2xl font-bold mt-8 mb-3 text-indigo-700">5. プライバシーポリシーの変更</h2>
-        <p class="text-gray-700 mb-4">
-            当サイトは法令変更やサービス内容の変更に応じて、本ポリシーを改定することがあります。
-            改定後はこのページにて公表いたします。
-        </p>
-        <p class="text-sm text-gray-500 mt-8">
-            制定日: 2024年1月4日<br>
-            広告費シミュレーター運営チーム
-        </p>
+<x-app-layout title="プライバシーポリシー | シミュレーターツール集" description="シミュレーターツール集のプライバシーポリシーです。" :hideTopAd="true">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">プライバシーポリシー</h1>
+
+        <div class="prose prose-sm max-w-none text-gray-700 space-y-6">
+            <section>
+                <h2 class="text-xl font-semibold mb-3">1. 個人情報の取得について</h2>
+                <p>当サイトでは、ユーザーの個人情報を一切取得・保存しておりません。</p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-semibold mb-3">2. データの保存について</h2>
+                <p>シミュレーターへの入力データは、ブラウザ上でのみ処理され、サーバーには送信・保存されません。</p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-semibold mb-3">3. Google Analyticsの使用について</h2>
+                <p>当サイトでは、サービス改善のためにGoogle Analyticsを使用しています。これにより、匿名の統計情報が収集されますが、個人を特定する情報は含まれません。</p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-semibold mb-3">4. 広告について</h2>
+                <p>当サイトではGoogle AdSenseを使用しています。広告配信のため、Cookieが使用される場合があります。</p>
+            </section>
+
+            <section>
+                <h2 class="text-xl font-semibold mb-3">5. お問い合わせ</h2>
+                <p>プライバシーポリシーに関するご質問は、サイト管理者までお問い合わせください。</p>
+            </section>
+
+            <p class="text-sm text-gray-500 mt-8">最終更新日: 2026年1月14日</p>
+        </div>
     </div>
-</x-layouts.app>
+</x-app-layout>

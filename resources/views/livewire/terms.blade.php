@@ -1,40 +1,46 @@
-<x-layouts.app>
-    <div class="bg-white p-8 rounded-2xl shadow-lg">
-        <h1 class="text-3xl font-bold mb-6 text-gray-800 border-b-2 border-indigo-500 pb-2">
-            利用規約
-        </h1>
-        <p class="text-gray-700 leading-relaxed mb-4">
-            本利用規約（以下、「本規約」といいます）は、「広告費シミュレーター」（以下、「当サイト」といいます）の利用条件を定めるものです。
-        </p>
+<x-app-layout title="利用規約 | シミュレーターツール集" description="シミュレーターツール集の利用規約です。" :hideTopAd="true">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">利用規約</h1>
 
-        <h2 class="text-2xl font-bold mt-8 mb-3 text-indigo-700">1. 適用</h2>
-        <p class="text-gray-700 mb-4">
-            本規約は、当サイトの利用に関する一切の関係に適用されます。
-        </p>
+        <div class="prose prose-sm max-w-none text-gray-700 space-y-6">
+            <section>
+                <h2 class="text-xl font-semibold mb-3">1. サービス概要</h2>
+                <p>本サービスは、ビジネスに関する各種シミュレーションを無料で提供するWebツールです。</p>
+            </section>
 
-        <h2 class="text-2xl font-bold mt-8 mb-3 text-indigo-700">2. 禁止事項</h2>
-        <ul class="list-disc list-inside text-gray-700 mb-4">
-            <li>法令または公序良俗に違反する行為</li>
-            <li>サーバーやネットワークを破壊・妨害する行為</li>
-            <li>不正アクセスを試みる行為</li>
-            <li>当サイトの運営を妨害する行為</li>
-        </ul>
+            <section>
+                <h2 class="text-xl font-semibold mb-3">2. 利用条件</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>本サービスは無料でご利用いただけます</li>
+                    <li>登録不要で何度でもご利用可能です</li>
+                    <li>商用・個人利用を問わずご利用いただけます</li>
+                </ul>
+            </section>
 
-        <h2 class="text-2xl font-bold mt-8 mb-3 text-indigo-700">3. 免責事項</h2>
-        <p class="text-gray-700 mb-4">
-            当サイトは、提供する情報の正確性・安全性を保証するものではありません。
-            利用により生じた損害について、運営者は一切責任を負いません。
-        </p>
+            <section>
+                <h2 class="text-xl font-semibold mb-3">3. 免責事項</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>計算結果の正確性は保証いたしません</li>
+                    <li>本サービスの利用により生じた損害について、当サイトは一切の責任を負いません</li>
+                    <li>事前の予告なくサービス内容を変更・終了する場合があります</li>
+                </ul>
+            </section>
 
-        <h2 class="text-2xl font-bold mt-8 mb-3 text-indigo-700">4. 規約の変更</h2>
-        <p class="text-gray-700 mb-4">
-            当サイトは、必要と判断した場合には本規約を改定することがあります。
-            改定後の規約は、本サイト上に掲示した時点で効力を生じます。
-        </p>
+            <section>
+                <h2 class="text-xl font-semibold mb-3">4. 禁止事項</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>法令に違反する行為</li>
+                    <li>サーバーに過度な負荷をかける行為</li>
+                    <li>本サービスの運営を妨害する行為</li>
+                </ul>
+            </section>
 
-        <p class="text-sm text-gray-500 mt-8">
-            最終更新日: 2024年1月4日<br>
-            シミュレーター運営チーム
-        </p>
+            <section>
+                <h2 class="text-xl font-semibold mb-3">5. 著作権</h2>
+                <p>本サイトのコンテンツの著作権は当サイトに帰属します。無断転載を禁じます。</p>
+            </section>
+
+            <p class="text-sm text-gray-500 mt-8">最終更新日: 2026年1月14日</p>
+        </div>
     </div>
-</x-layouts.app>
+</x-app-layout>
