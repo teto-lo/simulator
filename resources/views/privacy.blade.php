@@ -1,4 +1,4 @@
-<x-app-layout title="プライバシーポリシー | シミュレーターツール集" description="シミュレーターツール集のプライバシーポリシーです。" :hideTopAd="true">
+<x-layouts.app title="プライバシーポリシー | シミュレーターツール集" description="シミュレーターツール集のプライバシーポリシーです。" :hideTopAd="true">
     <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
         <h1 class="text-3xl font-bold mb-6 text-gray-800">プライバシーポリシー</h1>
 
@@ -31,4 +31,4 @@
             <p class="text-sm text-gray-500 mt-8">最終更新日: 2026年1月14日</p>
         </div>
     </div>
-</x-app-layout>
+</x-layouts.app>
