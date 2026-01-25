@@ -20,7 +20,7 @@
 
                 <h1
                     class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 mb-6">
-                    シミュレーションツール集
+                    計算ラボ
                 </h1>
 
                 <p class="text-xl md:text-2xl text-gray-600 mb-4 font-medium">

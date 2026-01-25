@@ -11,16 +11,15 @@
             <div class="text-center">
                 <div
                     class="inline-flex items-center justify-center p-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl mb-6 shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                    <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
-                        </path>
+                    <svg class="w-16 h-16 text-white" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" />
+                        <path d="M13 3L8 13H12L11 21L19 11H14L16 3H13Z" fill="currentColor" />
                     </svg>
                 </div>
 
                 <h1
                     class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 mb-6">
-                    シミュレーションツール集
+                    計算ラボ
                 </h1>
 
                 <p class="text-xl md:text-2xl text-gray-600 mb-4 font-medium">
@@ -54,7 +53,7 @@
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                 clip-rule="evenodd"></path>
                         </svg>
-                        <span class="text-sm font-semibold text-gray-700">全10ツール公開中</span>
+                        <span class="text-sm font-semibold text-gray-700">全機能ツール公開中</span>
                     </div>
                 </div>
             </div>
@@ -334,7 +333,7 @@
                     </svg>
                 </div>
                 <h2 class="text-3xl font-bold text-gray-800">金融・投資</h2>
-                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">3 tools</span>
+                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">4 tools</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -433,7 +432,68 @@
                         </div>
                     </div>
                 </a>
+                <a href="/nisa-ideco" class="group block">
+                    <div
+                        class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-green-400">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-400/20 to-emerald-600/20 rounded-bl-full">
+                        </div>
+                        <div class="p-8 relative">
+                            <div
+                                class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="mb-2">
+                                <span
+                                    class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold mb-3">人気</span>
+                            </div>
+                            <h3
+                                class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">
+                                NISA・iDeCo最適化ツール
+                            </h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">
+                                新NISA・iDeCoの運用シミュレーション。節税効果を含めた将来資産を計算。
+                            </p>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    新NISA完全対応
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    iDeCo職業別上限対応
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <svg class="w-4 h-4 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    節税効果を自動計算
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-green-600 font-bold group-hover:underline">
+                                    今すぐ使う →
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
+
         </section>
 
         {{-- 給与・税金 --}}

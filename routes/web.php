@@ -14,10 +14,12 @@ use App\Livewire\BmrCalculator;
 use App\Livewire\CalorieBurnCalculator;
 use App\Livewire\MovingCostCalculator;
 use App\Livewire\CarCostCalculator;
+use App\Livewire\ContactForm;
 
 // ホーム
 Route::get('/', Home::class)->name('home');
 
+Route::get('/contact', ContactForm::class)->name('contact');
 // マーケティング
 Route::get('/ad-cost', AdCostSimulator::class)->name('ad-cost');
 
@@ -29,6 +31,10 @@ Route::get('/break-even', BreakEvenCalculator::class)->name('break-even');
 Route::get('/compound-interest', CompoundInterestCalculator::class)->name('compound-interest');
 Route::get('/loan-repayment', LoanRepaymentCalculator::class)->name('loan-repayment');
 Route::get('/retirement-planning', RetirementCalculator::class)->name('retirement-planning');
+Route::get('/nisa-ideco', \App\Livewire\NisaIdecoCalculator::class)->name('nisa-ideco');
+
+
+// ===== home.blade.php の金融・投資セクションに追加 =====
 
 // 給与・税金
 Route::get('/salary-calculator', SalaryCalculator::class)->name('salary-calculator');
@@ -44,6 +50,5 @@ Route::get('/car-cost', CarCostCalculator::class)->name('car-cost');
 
 // 静的ページ
 Route::view('/about', 'about')->name('about');
-Route::view('/contact', 'contact')->name('contact');
 Route::view('/privacy', 'privacy')->name('privacy');
 Route::view('/terms', 'terms')->name('terms');

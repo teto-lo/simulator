@@ -1,4 +1,4 @@
-<x-layouts.app title="シミュレーションツール集について | 使い方ガイド" description="シミュレーションツール集のサービス概要、使い方、よくある質問をご紹介します。" :hideTopAd="true">
+<x-layouts.app title="計算ラボについて | 使い方ガイド" description="計算ラボのサービス概要、使い方、よくある質問をご紹介します。" :hideTopAd="true">
     <div class="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50 py-12">
         <div class="max-w-5xl mx-auto px-4">
 
@@ -13,7 +13,7 @@
                 </div>
                 <h1
                     class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 mb-4">
-                    シミュレーションツール集について
+                    計算ラボについて
                 </h1>
                 <p class="text-lg text-gray-600">
                     あらゆる計算を瞬時に実行する無料ツール集
@@ -30,7 +30,7 @@
                 <div class="prose prose-lg max-w-none text-gray-700 space-y-6">
                     <p class="text-lg leading-relaxed">
                         <strong
-                            class="text-purple-600">シミュレーションツール集</strong>は、ビジネスから日常生活まで、様々なシーンで必要な計算を瞬時に実行できる無料のWebツール集です。
+                            class="text-purple-600">計算ラボ</strong>は、ビジネスから日常生活まで、様々なシーンで必要な計算を瞬時に実行できる無料のWebツール集です。
                     </p>
 
                     <div class="grid md:grid-cols-3 gap-6 my-8">
