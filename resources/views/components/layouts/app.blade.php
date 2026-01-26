@@ -27,12 +27,15 @@
     {{-- Canonical URL --}}
     <link rel="canonical" href="{{ $canonical ?? url()->current() }}">
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7657771466735779"
+        crossorigin="anonymous"></script>
+
     {{-- 構造化データ --}}
     @if (isset($structuredData))
         {!! $structuredData !!}
     @else
         <script type="application/ld+json">
-                {!! json_encode([
+                    {!! json_encode([
             '@context' => 'https://schema.org',
             '@type' => 'WebApplication',
             'name' => '計算ラボ',
@@ -45,7 +48,7 @@
                 'priceCurrency' => 'JPY',
             ],
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
-                </script>
+                    </script>
     @endif
 
     @livewireStyles
@@ -136,6 +139,14 @@
                         class="text-gray-600 hover:text-purple-600 font-medium transition-colors">
                         ホーム
                     </a>
+                    <a href="{{ route('about') }}"
+                        class="text-gray-600 hover:text-purple-600 font-medium transition-colors">
+                        about
+                    </a>
+                    <a href="{{ route('contact') }}"
+                        class="text-gray-600 hover:text-purple-600 font-medium transition-colors">
+                        お問い合わせ
+                    </a>
                 </nav>
             </div>
         </div>
@@ -150,7 +161,6 @@
                 <div class="sticky top-24 space-y-6">
                     {{-- サイドバー広告1（楽天ウィジェット 148x600） --}}
                     <div class="bg-white rounded-xl shadow-lg p-2 border-2 border-purple-100">
-                        <p class="text-xs text-gray-500 text-center mb-2">スポンサー</p>
                         <div class="flex justify-center">
                             <script type="text/javascript">
                                 rakuten_design = "slide";
@@ -215,7 +225,6 @@
                 {{-- 上部広告（楽天ウィジェット 600x200） --}}
                 @if (!isset($hideTopAd) || !$hideTopAd)
                     <div class="mb-8 bg-white rounded-xl shadow-lg p-4 border-2 border-purple-100">
-                        <p class="text-xs text-gray-500 text-center mb-2">スポンサー</p>
                         <div class="flex justify-center">
                             <script type="text/javascript">
                                 rakuten_design = "slide";
@@ -243,7 +252,6 @@
                 {{-- 下部広告（楽天ウィジェット 600x200） --}}
                 @if (!isset($hideBottomAd) || !$hideBottomAd)
                     <div class="mt-12 bg-white rounded-xl shadow-lg p-4 border-2 border-purple-100">
-                        <p class="text-xs text-gray-500 text-center mb-2">スポンサー</p>
                         <div class="flex justify-center">
                             <script type="text/javascript">
                                 rakuten_design = "slide";
@@ -271,7 +279,6 @@
                 <div class="sticky top-24 space-y-6">
                     {{-- サイドバー広告2（楽天ウィジェット 148x600） --}}
                     <div class="bg-white rounded-xl shadow-lg p-2 border-2 border-purple-100">
-                        <p class="text-xs text-gray-500 text-center mb-2">スポンサー</p>
                         <div class="flex justify-center">
                             <script type="text/javascript">
                                 rakuten_design = "slide";
