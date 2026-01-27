@@ -52,3 +52,27 @@ Route::get('/car-cost', CarCostCalculator::class)->name('car-cost');
 Route::view('/about', 'about')->name('about');
 Route::view('/privacy', 'privacy')->name('privacy');
 Route::view('/terms', 'terms')->name('terms');
+
+Route::get('/sitemap.xml', function () {
+    $sitemap = Spatie\Sitemap\Sitemap::create()
+        ->add(route('home'))
+        ->add(route('contact'))
+        ->add(route('ad-cost'))
+        ->add(route('roi-calculator'))
+        ->add(route('break-even'))
+        ->add(route('compound-interest'))
+        ->add(route('loan-repayment'))
+        ->add(route('retirement-planning'))
+        ->add(route('nisa-ideco'))
+        ->add(route('salary-calculator'))
+        ->add(route('bmi-calculator'))
+        ->add(route('bmr-calculator'))
+        ->add(route('calorie-burn'))
+        ->add(route('moving-cost'))
+        ->add(route('car-cost'))
+        ->add(route('about'))
+        ->add(route('privacy'))
+        ->add(route('terms'));
+
+    return $sitemap->toResponse(request());
+});

@@ -20,7 +20,9 @@
 
             <section>
                 <h2 class="text-xl font-semibold mb-3">4. 広告について</h2>
-                <p>当サイトではGoogle AdSenseを使用しています。広告配信のため、Cookieが使用される場合があります。</p>
+                <p>当サイトでは、第三者配信の広告サービス（Googleアドセンス）を利用しています。</p>
+                <p>このような広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報『Cookie』(氏名、住所、メール アドレス、電話番号は含まれません) を使用することがあります。</p>
+                <p>またGoogleアドセンスに関して、このプロセスの詳細やこのような情報が広告配信事業者に使用されないようにする方法については、<a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">Googleのポリシーと規約</a>をご覧ください。</p>
             </section>
 
             <section>
