@@ -549,44 +549,147 @@
             </div>
         </section>
 
-        {{-- 生活・実用 (NEW カテゴリー) --}}
+        {{-- フリーランス・副業 --}}
         <section class="mb-20">
             <div class="flex items-center gap-3 mb-8">
-                <div
-                    class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
+                <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
                 </div>
-                <h2 class="text-3xl font-bold text-gray-800">生活・実用</h2>
-                <span class="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-semibold">2 tools</span>
+                <h2 class="text-3xl font-bold text-gray-800">フリーランス・副業</h2>
+                <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-semibold">2 tools</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <a href="/moving-cost" class="group block">
-                    <div
-                        class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-cyan-400">
-                        <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-bl-full">
-                        </div>
+                <a href="/invoice" class="group block">
+                    <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-orange-400">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-red-600/20 rounded-bl-full"></div>
                         <div class="p-8 relative">
-                            <div
-                                class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                                    </path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                                 </svg>
                             </div>
                             <div class="mb-2">
-                                <span
-                                    class="inline-block px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs font-bold mb-3">NEW</span>
+                                <span class="inline-block px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-bold mb-3">NEW</span>
                             </div>
-                            <h3
-                                class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-cyan-600 transition-colors">
-                                引越し費用計算</h3>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors">源泉徴収・請求書計算</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">消費税・源泉徴収税を自動計算。手取り額からの逆算も一発対応。</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-orange-600 font-bold group-hover:underline">今すぐ使う →</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/flea-market" class="group block">
+                    <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-orange-400">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-red-600/20 rounded-bl-full"></div>
+                        <div class="p-8 relative">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                                </svg>
+                            </div>
+                            <div class="mb-2">
+                                <span class="inline-block px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-xs font-bold mb-3">NEW</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors">フリマ利益計算</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">メルカリ・ラクマの手数料・送料を引いた純利益を瞬時に計算。</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-orange-600 font-bold group-hover:underline">今すぐ使う →</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        {{-- Web・クリエイター --}}
+        <section class="mb-20">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-800">Web・クリエイター</h2>
+                <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm font-semibold">2 tools</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="/aspect-ratio" class="group block">
+                    <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-pink-400">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-400/20 to-rose-600/20 rounded-bl-full"></div>
+                        <div class="p-8 relative">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div class="mb-2">
+                                <span class="inline-block px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-xs font-bold mb-3">NEW</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-pink-600 transition-colors">アスペクト比計算</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">16:9, 4:3, 黄金比など。動画制作や画像編集に必須の比率計算。</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-pink-600 font-bold group-hover:underline">今すぐ使う →</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/px-rem" class="group block">
+                    <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-pink-400">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-400/20 to-rose-600/20 rounded-bl-full"></div>
+                        <div class="p-8 relative">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                            <div class="mb-2">
+                                <span class="inline-block px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-xs font-bold mb-3">NEW</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-pink-600 transition-colors">px/rem 変換</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">CSSコーディングを爆速化。ルートフォントサイズ設定も可能。</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-pink-600 font-bold group-hover:underline">今すぐ使う →</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        {{-- 生活・実用 (Append) --}}
+        <section class="mb-20">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-800">生活・実用</h2>
+                <span class="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-semibold">4 tools</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {{-- Existing tools --}}
+                <a href="/moving-cost" class="group block">
+                    <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-cyan-400">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-bl-full"></div>
+                        <div class="p-8 relative">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                                </svg>
+                            </div>
+                            <div class="mb-2">
+                                <span class="inline-block px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs font-bold mb-3">NEW</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-cyan-600 transition-colors">引越し費用計算</h3>
                             <p class="text-gray-600 mb-6 leading-relaxed">距離・間取り・時期から引越し費用の概算を計算。繁忙期割増も考慮。</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-cyan-600 font-bold group-hover:underline">今すぐ使う →</span>
@@ -596,28 +699,19 @@
                 </a>
 
                 <a href="/car-cost" class="group block">
-                    <div
-                        class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-blue-400">
-                        <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-bl-full">
-                        </div>
+                    <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-blue-400">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-bl-full"></div>
                         <div class="p-8 relative">
-                            <div
-                                class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0">
-                                    </path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path>
                                 </svg>
                             </div>
                             <div class="mb-2">
-                                <span
-                                    class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold mb-3">NEW</span>
+                                <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold mb-3">NEW</span>
                             </div>
-                            <h3
-                                class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
-                                車購入・維持費計算</h3>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">車購入・維持費計算</h3>
                             <p class="text-gray-600 mb-6 leading-relaxed">購入価格、ローン、税金、保険、燃料代から総コストを計算。</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-blue-600 font-bold group-hover:underline">今すぐ使う →</span>
@@ -625,8 +719,49 @@
                         </div>
                     </div>
                 </a>
-            </div>
-        </section>
+
+                {{-- New Life Tools Updated Colors --}}
+                <a href="/electricity-cost" class="group block">
+                    <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-cyan-400">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-bl-full"></div>
+                        <div class="p-8 relative">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <div class="mb-2">
+                                <span class="inline-block px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs font-bold mb-3">NEW</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-cyan-600 transition-colors">電気代計算</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">ワット数から電気代を正確にシミュレーション。</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-cyan-600 font-bold group-hover:underline">今すぐ使う →</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/time-value" class="group block">
+                    <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-blue-400">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-bl-full"></div>
+                        <div class="p-8 relative">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="mb-2">
+                                <span class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold mb-3">NEW</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">時間価値計算</h3>
+                            <p class="text-gray-600 mb-6 leading-relaxed">「自分でやるor外注？」を時給換算で判断。</p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-blue-600 font-bold group-hover:underline">今すぐ使う →</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
     </div>
 
     {{-- Feature Section --}}

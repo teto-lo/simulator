@@ -53,6 +53,15 @@ Route::view('/about', 'about')->name('about');
 Route::view('/privacy', 'privacy')->name('privacy');
 Route::view('/terms', 'terms')->name('terms');
 
+Route::get('/invoice', \App\Livewire\InvoiceCalculator::class)->name('invoice');
+
+Route::get('/aspect-ratio', \App\Livewire\AspectRatioCalculator::class)->name('aspect-ratio');
+
+Route::get('/px-rem', \App\Livewire\PxRemConverter::class)->name('px-rem');
+Route::get('/flea-market', \App\Livewire\FleaMarketCalculator::class)->name('flea-market');
+Route::get('/electricity-cost', \App\Livewire\ElectricityCostCalculator::class)->name('electricity-cost');
+Route::get('/time-value', \App\Livewire\TimeValueCalculator::class)->name('time-value');
+
 Route::get('/sitemap.xml', function () {
     $sitemap = Spatie\Sitemap\Sitemap::create()
         ->add(route('home'))
@@ -70,6 +79,12 @@ Route::get('/sitemap.xml', function () {
         ->add(route('calorie-burn'))
         ->add(route('moving-cost'))
         ->add(route('car-cost'))
+        ->add(route('invoice'))
+        ->add(route('aspect-ratio'))
+        ->add(route('px-rem'))
+        ->add(route('flea-market'))
+        ->add(route('electricity-cost'))
+        ->add(route('time-value'))
         ->add(route('about'))
         ->add(route('privacy'))
         ->add(route('terms'));

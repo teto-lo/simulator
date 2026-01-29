@@ -15,6 +15,7 @@ class Home extends Component
                 'keywords' => 'シミュレーター,計算ツール,無料,広告予算,投資計算,健康管理,ビジネスツール',
                 'ogTitle' => '計算ラボ | あらゆる計算を瞬時に実行',
                 'ogDescription' => 'ビジネス・投資・健康など、様々な分野の計算ツールを完全無料で提供。登録不要で今すぐ使えます。',
+                'hideTopAd' => true,
             ]);
     }
 }

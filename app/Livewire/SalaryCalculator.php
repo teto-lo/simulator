@@ -84,6 +84,7 @@ class SalaryCalculator extends Component
                 'title' => '手取り給与計算シミュレーター【無料】| 年収から手取りを計算',
                 'description' => '年収を入力するだけで、所得税・住民税・社会保険料を差し引いた手取り額を瞬時に計算。転職、昇給の参考に。',
                 'keywords' => '手取り計算,年収,給与計算,所得税,住民税,社会保険料,手取り年収,無料ツール',
+                'hideTopAd' => true,
             ]);
     }
 }
