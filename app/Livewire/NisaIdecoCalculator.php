@@ -176,6 +176,8 @@ class NisaIdecoCalculator extends Component
             'description' => '新NISA・iDeCoの運用シミュレーション。投資額、期間、期待リターンから将来資産と節税効果を計算。老後資金計画に最適な無料ツール。',
             'keywords' => 'NISA,iDeCo,新NISA,積立NISA,確定拠出年金,節税,投資シミュレーション,老後資金,資産運用,無料ツール',
             'structuredData' => $this->getStructuredData(),
+            'hideBreadcrumbs' => true,
+            'hideTopAd' => true,
         ]);
     }
     

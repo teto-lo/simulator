@@ -43,22 +43,28 @@
         </div>
 
         {{-- 便利ポイント --}}
-        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 shadow-lg border-2 border-cyan-200/50">
-            <div class="flex items-start gap-4">
-                <div class="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl p-3 shadow-lg">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
+        <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-8 mb-8 shadow-xl border border-cyan-100">
+            <h3 class="font-bold text-gray-800 mb-6 text-xl flex items-center gap-2">
+                <span class="w-1.5 h-6 bg-cyan-500 rounded-full"></span>
+                💡 こんなときに便利
+            </h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @php
+                    $points = [
+                        '車購入前の「月々の実質負担」と「5年後の総額」を確認したいとき',
+                        'マイカーローンを組む際、金利差が総支払額にどれだけ影響するか知りたい',
+                        '自動車税、重量税、自賠責保険など「維持費」の概算を把握したい',
+                        'ガソリン代の変動や実燃費から、月間の燃料コストをシミュレーション',
+                        '今の年収で「無理のないカーライフ」が送れるかの予算判断に',
+                        '駐車場代や任意保険料を含めた、トータルでの車関連支出を見える化したい'
+                    ];
+                @endphp
+                @foreach($points as $point)
+                <div class="bg-cyan-50/50 p-4 rounded-xl border border-cyan-100 flex items-start gap-3 transition-all hover:shadow-md group">
+                    <span class="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
+                    <p class="text-sm text-gray-700 leading-relaxed">{{ $point }}</p>
                 </div>
-                <div class="flex-1">
-                    <h3 class="font-bold text-gray-800 mb-3 text-lg">💡 こんなときに便利</h3>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <p class="text-sm text-gray-600">車購入前の総予算確認</p>
-                        <p class="text-sm text-gray-600">ローン・維持費の把握</p>
-                        <p class="text-sm text-gray-600">月額コストの可視化</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
 
@@ -117,6 +123,37 @@
                     <div class="bg-white rounded-xl p-4 shadow-md">
                         <p class="text-xs text-gray-500">燃料費</p>
                         <p class="text-xl font-bold text-orange-600">¥{{ number_format($annualFuel) }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- 使い方セクション --}}
+        <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-8 mb-12 shadow-xl border border-gray-100">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                <span class="w-2 h-7 bg-cyan-500 rounded-full"></span>
+                使い方
+            </h2>
+            <div class="space-y-6">
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-8 h-8 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center font-bold">1</div>
+                    <div>
+                        <p class="font-bold text-gray-800">車両価格とローン条件を入力</p>
+                        <p class="text-sm text-gray-600">購入予定の車両価格、ローンの金利・年数を入力します。「とりあえず月々の支払額を知りたい」という場合にも便利です。</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-8 h-8 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center font-bold">2</div>
+                    <div>
+                        <p class="font-bold text-gray-800">維持費の条件を設定</p>
+                        <p class="text-sm text-gray-600">想定している月間走行距離などを入力すると、ガソリン代や税金、保険料を含めたリアルな維持費が自動計算されます。</p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex-shrink-0 w-8 h-8 bg-cyan-100 text-cyan-600 rounded-full flex items-center justify-center font-bold">3</div>
+                    <div>
+                        <p class="font-bold text-gray-800">「月額コスト」を確認</p>
+                        <p class="text-sm text-gray-600">ローン支払額だけでなく、維持費を含めた「毎月実際に出ていくお金」がわかります。家計への影響を判断しましょう。</p>
                     </div>
                 </div>
             </div>

@@ -8,20 +8,18 @@ use Livewire\Attributes\Title;
 #[Title('時間価値計算ツール | 時給換算で判断')]
 class TimeValueCalculator extends Component
 {
-    public $hourlyWage = '';
-    public $taskTime = '';
-    public $taskCost = '';
+    public $monthlyIncome = 25; // 手取り月収(万円)
+    public $taskTime = 2; // 時間
+    public $taskCost = 5000; // 費用
 
     // Results
+    public $hourlyWage = 0; // 時給換算
     public $timeValue = 0;
     public $recommendation = '';
     public $savings = 0;
 
     public function mount()
     {
-        $this->hourlyWage = 2000;
-        $this->taskTime = 2;
-        $this->taskCost = 3000;
         $this->calculate();
     }
 
@@ -32,17 +30,26 @@ class TimeValueCalculator extends Component
 
     public function calculate()
     {
-        $wage = (float) $this->hourlyWage;
+        $income = (float) $this->monthlyIncome;
         $time = (float) $this->taskTime;
         $cost = (float) $this->taskCost;
 
-        if ($wage <= 0 || $time <= 0) {
+        if ($income <= 0) {
+            $this->resetResults();
+            return;
+        }
+
+        // 月160時間稼働として時給換算 (月収万円 * 10000 / 160)
+        // 160 = 20日 * 8時間
+        $this->hourlyWage = ($income * 10000) / 160;
+
+        if ($this->hourlyWage <= 0 || $time <= 0) {
             $this->resetResults();
             return;
         }
 
         // 時間の価値 = 時給 × 作業時間
-        $this->timeValue = $wage * $time;
+        $this->timeValue = $this->hourlyWage * $time;
 
         // 判定
         if ($cost < $this->timeValue) {
@@ -66,6 +73,7 @@ class TimeValueCalculator extends Component
         return view('livewire.time-value-calculator')
             ->layout('components.layouts.app', [
                 'hideTopAd' => true,
+                'hideBreadcrumbs' => true,
             ]);
     }
 }

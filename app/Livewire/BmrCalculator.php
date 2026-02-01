@@ -74,6 +74,8 @@ class BmrCalculator extends Component
                 'title' => '基礎代謝・消費カロリー計算【無料】| ダイエットに最適',
                 'description' => '年齢・性別・体重から基礎代謝量を算出。活動レベル別の1日消費カロリーも計算できる無料ツール。',
                 'keywords' => '基礎代謝計算,消費カロリー,TDEE,ダイエット,カロリー計算,減量,増量,無料ツール',
+                'hideBreadcrumbs' => true,
+                'hideTopAd' => true,
             ]);
     }
 }

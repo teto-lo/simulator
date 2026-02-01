@@ -114,6 +114,8 @@ class CarCostCalculator extends Component
             'title' => '車購入・維持費計算【無料】| 総コストシミュレーター',
             'description' => '車の購入から維持までの総コストを計算。ローン、税金、保険、燃料代、駐車場代を含めた実際の費用を把握。',
             'keywords' => '車維持費,車購入費用,自動車税,車検費用,ガソリン代,駐車場代,カーローン,無料ツール',
+            'hideBreadcrumbs' => true,
+            'hideTopAd' => true,
         ]);
     }
 }

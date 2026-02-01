@@ -1,11 +1,11 @@
-<x-layouts.app title="利用規約 | シミュレーターツール集" description="シミュレーターツール集の利用規約です。" :hideTopAd="true">
+<x-layouts.app title="利用規約 | 計算ラボ" description="計算ラボの利用規約に関するご案内です。" :hideTopAd="true">
     <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
         <h1 class="text-3xl font-bold mb-6 text-gray-800">利用規約</h1>
 
         <div class="prose prose-sm max-w-none text-gray-700 space-y-6">
             <section>
                 <h2 class="text-xl font-semibold mb-3">1. サービス概要</h2>
-                <p>本サービスは、ビジネスに関する各種シミュレーションを無料で提供するWebツールです。</p>
+                <p>本サービスは、ビジネスや日常生活に関する各種シミュレーションを無料で提供するWebツール「計算ラボ」です。</p>
             </section>
 
             <section>

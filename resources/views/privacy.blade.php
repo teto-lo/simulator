@@ -1,4 +1,4 @@
-<x-layouts.app title="プライバシーポリシー | シミュレーターツール集" description="シミュレーターツール集のプライバシーポリシーです。" :hideTopAd="true">
+<x-layouts.app title="プライバシーポリシー | 計算ラボ" description="計算ラボのプライバシーポリシー（個人情報保護方針）に関するご案内です。" :hideTopAd="true">
     <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
         <h1 class="text-3xl font-bold mb-6 text-gray-800">プライバシーポリシー</h1>
 

@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{-- 動的SEO --}}
-    <title>{{ $title ?? '計算ラボ【無料】' }}</title>
-    <meta name="description" content="{{ $description ?? 'ビジネスから日常まで、あらゆる計算を瞬時に実行。完全無料・登録不要の計算ラボ。' }}">
+    <title>{{ $title ?? '計算ラボ | 完全無料のオンライン計算・シミュレーター' }}</title>
+    <meta name="description" content="{{ $description ?? '「計算ラボ」は、ビジネス、健康、金融、日常生活など、あらゆる計算をプロフェッショナルかつシンプルに解決する無料オンラインツール集です。登録不要で今すぐ使えます。' }}">
     <meta name="keywords" content="{{ $keywords ?? 'シミュレーター,計算ツール,無料,ビジネス,投資,健康' }}">
 
     {{-- OGP --}}
@@ -39,7 +39,7 @@
     </script>
 
     {{-- AdSense --}}
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_ADSENSE_ID"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7657771466735779"
         crossorigin="anonymous"></script>
 
     {{-- 構造化データ --}}
@@ -51,7 +51,7 @@
             '@context' => 'https://schema.org',
             '@type' => 'WebApplication',
             'name' => '計算ラボ',
-            'description' => 'ビジネスから日常まで、あらゆる計算を瞬時に実行できる無料ツール',
+            'description' => 'ビジネス、健康、金融など、あらゆる計算をプロフェッショナルに解決する無料ツール集。',
             'url' => url()->current(),
             'applicationCategory' => 'BusinessApplication',
             'offers' => [
@@ -80,6 +80,15 @@
 
         .sp-fixed-ad.show {
             transform: translateY(0);
+        }
+
+        /* PC等では強制非表示（lg breakpoint） */
+        @media (min-width: 1024px) {
+            .sp-fixed-ad, .sp-fixed-ad.show {
+                display: none !important;
+                visibility: hidden !important;
+                pointer-events: none !important;
+            }
         }
 
         /* モーダル用のスタイル */
@@ -151,12 +160,16 @@
                         class="text-gray-600 hover:text-purple-600 font-medium transition-colors">
                         ホーム
                     </a>
-                    <a href="{{ route('about') }}"
+                    <a href="/ad-cost"
                         class="text-gray-600 hover:text-purple-600 font-medium transition-colors">
-                        about
+                        ツール一覧
                     </a>
-                    <a href="{{ route('contact') }}"
+                    <a href="/about"
                         class="text-gray-600 hover:text-purple-600 font-medium transition-colors">
+                        使い方
+                    </a>
+                    <a href="/contact"
+                        class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2.5 rounded-xl font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105">
                         お問い合わせ
                     </a>
                 </nav>
@@ -195,7 +208,7 @@
 
                     {{-- クイックリンク --}}
                     <div class="bg-white rounded-xl shadow-lg p-6 border-2 border-purple-100">
-                        <h3 class="text-sm font-bold text-gray-700 mb-4 flex items-center gap-2">
+                        <h3 class="text-xs font-bold text-gray-700 mb-4 flex items-center gap-2">
                             <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -205,7 +218,7 @@
                         <ul class="space-y-3">
                             <li>
                                 <a href="/ad-cost"
-                                    class="text-sm text-gray-600 hover:text-purple-600 flex items-center gap-2 group">
+                                    class="text-xs text-gray-600 hover:text-purple-600 flex items-center gap-2 group">
                                     <span
                                         class="w-1.5 h-1.5 bg-purple-400 rounded-full group-hover:bg-purple-600"></span>
                                     広告予算シミュレーター
@@ -213,7 +226,7 @@
                             </li>
                             <li>
                                 <a href="/nisa-ideco"
-                                    class="text-sm text-gray-600 hover:text-purple-600 flex items-center gap-2 group">
+                                    class="text-xs text-gray-600 hover:text-purple-600 flex items-center gap-2 group">
                                     <span
                                         class="w-1.5 h-1.5 bg-purple-400 rounded-full group-hover:bg-purple-600"></span>
                                     NISA・iDeCo計算
@@ -221,7 +234,7 @@
                             </li>
                             <li>
                                 <a href="/moving-cost"
-                                    class="text-sm text-gray-600 hover:text-purple-600 flex items-center gap-2 group">
+                                    class="text-xs text-gray-600 hover:text-purple-600 flex items-center gap-2 group">
                                     <span
                                         class="w-1.5 h-1.5 bg-purple-400 rounded-full group-hover:bg-purple-600"></span>
                                     引越し費用計算
@@ -234,10 +247,49 @@
 
             {{-- メインコンテンツエリア --}}
             <main class="flex-1 min-w-0 mb-20 lg:mb-0">
+                {{-- パンくずリスト --}}
+                @if (!isset($hideBreadcrumbs) || !$hideBreadcrumbs)
+                <nav class="flex mb-8 text-sm" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+                        <li class="inline-flex items-center">
+                            <a href="{{ route('home') }}"
+                                class="inline-flex items-center text-gray-700 hover:text-purple-600">
+                                <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                                </svg>
+                                ホーム
+                            </a>
+                        </li>
+                        @if (isset($breadcrumbs))
+                            @foreach ($breadcrumbs as $breadcrumb)
+                                <li>
+                                    <div class="flex items-center">
+                                        <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m1 9 4-4-4-4" />
+                                        </svg>
+                                        @if ($breadcrumb['url'])
+                                            <a href="{{ $breadcrumb['url'] }}"
+                                                class="ms-1 text-gray-700 hover:text-purple-600 md:ms-2">{{ $breadcrumb['name'] }}</a>
+                                        @else
+                                            <span
+                                                class="ms-1 text-gray-500 md:ms-2 dark:text-gray-400">{{ $breadcrumb['name'] }}</span>
+                                        @endif
+                                    </div>
+                                </li>
+                            @endforeach
+                        @endif
+                    </ol>
+                </nav>
+                @endif
+
                 {{-- 上部広告（楽天ウィジェット 600x200） --}}
                 @if (!isset($hideTopAd) || !$hideTopAd)
-                    <div class="mb-8 bg-white rounded-xl shadow-lg p-4 border-2 border-purple-100">
-                        <div class="flex justify-center">
+                    <div class="mb-8 flex justify-center opacity-80 hover:opacity-100 transition-opacity">
+                        <div class="max-w-full overflow-hidden">
                             <script type="text/javascript">
                                 rakuten_design = "slide";
                                 rakuten_affiliateId = "50456315.a7115187.50456316.6028b4a0";
@@ -263,8 +315,8 @@
 
                 {{-- 下部広告（楽天ウィジェット 600x200） --}}
                 @if (!isset($hideBottomAd) || !$hideBottomAd)
-                    <div class="mt-12 bg-white rounded-xl shadow-lg p-4 border-2 border-purple-100">
-                        <div class="flex justify-center">
+                    <div class="mt-12 flex justify-center opacity-80 hover:opacity-100 transition-opacity">
+                        <div class="max-w-full overflow-hidden">
                             <script type="text/javascript">
                                 rakuten_design = "slide";
                                 rakuten_affiliateId = "50456315.a7115187.50456316.6028b4a0";
@@ -394,39 +446,39 @@
 
     {{-- フッター --}}
     <footer class="bg-gradient-to-br from-gray-900 to-gray-800 text-white mt-20">
-        <div class="max-w-7xl mx-auto px-4 py-12">
+        <div class="max-w-7xl mx-auto px-4 py-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                 <div>
                     <div class="flex items-center gap-2 mb-4">
                         <div
-                            class="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
-                            <svg class="w-16 h-16 text-white" viewBox="0 0 24 24" fill="none">
+                            class="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
+                            <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="none">
                                 <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"
                                     stroke-width="2" />
                                 <path d="M13 3L8 13H12L11 21L19 11H14L16 3H13Z" fill="currentColor" />
                             </svg>
                         </div>
-                        <h3 class="text-lg font-bold">計算ラボ</h3>
+                        <h3 class="text-sm font-bold">Calculator Labs</h3>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">
+                    <p class="text-gray-400 text-xs leading-relaxed">
                         ビジネスから日常まで、あらゆる計算を瞬時に実行。完全無料・登録不要でご利用いただけます。
                     </p>
                 </div>
 
                 <div>
-                    <h4 class="text-sm font-bold mb-4 text-purple-400">サイト情報</h4>
+                    <h4 class="text-xs font-bold mb-4 text-purple-400">サイト情報</h4>
                     <ul class="space-y-2">
                         <li><a href="{{ route('privacy') }}"
-                                class="text-gray-400 hover:text-white text-sm transition-colors">プライバシーポリシー</a></li>
+                                class="text-gray-400 hover:text-white text-xs transition-colors">プライバシーポリシー</a></li>
                         <li><a href="{{ route('terms') }}"
-                                class="text-gray-400 hover:text-white text-sm transition-colors">利用規約</a></li>
+                                class="text-gray-400 hover:text-white text-xs transition-colors">利用規約</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="border-t border-gray-700 pt-8 text-center">
-                <p class="text-sm text-gray-400">
-                    &copy; 2026 計算ラボ. All rights reserved.
+                <p class="text-xs text-gray-400">
+                    &copy; 2026 Calculator Labs. All rights reserved.
                 </p>
             </div>
         </div>
@@ -437,6 +489,9 @@
         let spAdClosed = false;
 
         window.addEventListener('scroll', function () {
+            // PCサイズでは処理しない
+            if (window.innerWidth >= 1024) return;
+
             const spAd = document.getElementById('spFixedAd');
             if (!spAd || spAdClosed) return;
 

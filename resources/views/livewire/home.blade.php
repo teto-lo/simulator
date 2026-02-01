@@ -27,7 +27,7 @@
                 </p>
 
                 <p class="text-gray-500 text-lg mb-8">
-                    完全無料・登録不要・何度でも使える
+                    「計算ラボ」は、完全無料・登録不要・何度でも使えるツール集です。
                 </p>
 
                 <div class="flex flex-wrap justify-center gap-4 mb-6">
@@ -67,7 +67,7 @@
         <section class="mb-20">
             <div class="flex items-center gap-3 mb-8 mt-12">
                 <div
-                    class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                    class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
@@ -83,7 +83,7 @@
                     <div
                         class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-indigo-400">
                         <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-indigo-600/20 rounded-bl-full">
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-bl-full">
                         </div>
                         <div class="p-8 relative">
                             <div
@@ -120,7 +120,7 @@
         <section class="mb-20">
             <div class="flex items-center gap-3 mb-8">
                 <div
-                    class="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center">
+                    class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
@@ -128,33 +128,33 @@
                     </svg>
                 </div>
                 <h2 class="text-3xl font-bold text-gray-800">健康・フィットネス</h2>
-                <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-semibold">3 tools</span>
+                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-semibold">3 tools</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <a href="/bmi-calculator" class="group block">
                     <div
-                        class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-red-400">
+                        class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-green-400">
                         <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-400/20 to-pink-600/20 rounded-bl-full">
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-100 to-emerald-100 rounded-bl-full">
                         </div>
                         <div class="p-8 relative">
                             <div
-                                class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                                 </svg>
                             </div>
                             <h3
-                                class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-red-600 transition-colors">
+                                class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">
                                 BMI・適正体重計算
                             </h3>
                             <p class="text-gray-600 mb-6 leading-relaxed">
                                 身長と体重からBMI値を算出。適正体重や肥満度を判定して健康管理をサポート。
                             </p>
                             <div class="flex items-center justify-between">
-                                <span class="text-red-600 font-bold group-hover:underline">
+                                <span class="text-green-600 font-bold group-hover:underline">
                                     今すぐ使う →
                                 </span>
                             </div>
@@ -164,13 +164,13 @@
 
                 <a href="/bmr-calculator" class="group block">
                     <div
-                        class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-pink-400">
+                        class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-emerald-400">
                         <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-400/20 to-pink-600/20 rounded-bl-full">
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-100 to-emerald-100 rounded-bl-full">
                         </div>
                         <div class="p-8 relative">
                             <div
-                                class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z">
@@ -180,14 +180,14 @@
                                 </svg>
                             </div>
                             <h3
-                                class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-pink-600 transition-colors">
+                                class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-emerald-600 transition-colors">
                                 基礎代謝・消費カロリー計算
                             </h3>
                             <p class="text-gray-600 mb-6 leading-relaxed">
                                 年齢・性別・体重から基礎代謝量を算出。活動レベル別の1日消費カロリーも計算。
                             </p>
                             <div class="flex items-center justify-between">
-                                <span class="text-pink-600 font-bold group-hover:underline">
+                                <span class="text-emerald-600 font-bold group-hover:underline">
                                     今すぐ使う →
                                 </span>
                             </div>
@@ -197,13 +197,13 @@
 
                 <a href="/calorie-burn" class="group block">
                     <div
-                        class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-rose-400">
+                        class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-green-400">
                         <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-400/20 to-pink-600/20 rounded-bl-full">
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-100 to-emerald-100 rounded-bl-full">
                         </div>
                         <div class="p-8 relative">
                             <div
-                                class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -211,17 +211,17 @@
                             </div>
                             <div class="mb-2">
                                 <span
-                                    class="inline-block px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-bold mb-3">NEW</span>
+                                    class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold mb-3">NEW</span>
                             </div>
                             <h3
-                                class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-rose-600 transition-colors">
+                                class="text-2xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">
                                 運動消費カロリー計算
                             </h3>
                             <p class="text-gray-600 mb-6 leading-relaxed">
                                 運動の種類と時間から消費カロリーを計算。15種類以上の運動に対応。
                             </p>
                             <div class="flex items-center justify-between">
-                                <span class="text-rose-600 font-bold group-hover:underline">
+                                <span class="text-green-600 font-bold group-hover:underline">
                                     今すぐ使う →
                                 </span>
                             </div>
@@ -237,7 +237,7 @@
         <section class="mb-20">
             <div class="flex items-center gap-3 mb-8">
                 <div
-                    class="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl flex items-center justify-center">
+                    class="w-12 h-12 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
@@ -253,7 +253,7 @@
                     <div
                         class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-purple-400">
                         <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-violet-600/20 rounded-bl-full">
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100 to-violet-100 rounded-bl-full">
                         </div>
                         <div class="p-8 relative">
                             <div
@@ -288,7 +288,7 @@
                     <div
                         class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-violet-400">
                         <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-400/20 to-violet-600/20 rounded-bl-full">
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100 to-violet-100 rounded-bl-full">
                         </div>
                         <div class="p-8 relative">
                             <div
@@ -325,7 +325,7 @@
         <section class="mb-20">
             <div class="flex items-center gap-3 mb-8">
                 <div
-                    class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                    class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
@@ -341,7 +341,7 @@
                     <div
                         class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-green-400">
                         <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-400/20 to-emerald-600/20 rounded-bl-full">
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-100 to-emerald-100 rounded-bl-full">
                         </div>
                         <div class="p-8 relative">
                             <div
@@ -371,7 +371,7 @@
                     <div
                         class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-emerald-400">
                         <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-400/20 to-emerald-600/20 rounded-bl-full">
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-100 to-emerald-100 rounded-bl-full">
                         </div>
                         <div class="p-8 relative">
                             <div
@@ -500,7 +500,7 @@
         <section class="mb-20">
             <div class="flex items-center gap-3 mb-8">
                 <div
-                    class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center">
+                    class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z">
@@ -516,7 +516,7 @@
                     <div
                         class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-amber-400">
                         <div
-                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-amber-400/20 to-orange-600/20 rounded-bl-full">
+                            class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-amber-100 to-orange-100 rounded-bl-full">
                         </div>
                         <div class="p-8 relative">
                             <div
@@ -552,7 +552,7 @@
         {{-- フリーランス・副業 --}}
         <section class="mb-20">
             <div class="flex items-center gap-3 mb-8">
-                <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
+                <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
@@ -564,7 +564,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <a href="/invoice" class="group block">
                     <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-orange-400">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-red-600/20 rounded-bl-full"></div>
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-100 to-red-100 rounded-bl-full"></div>
                         <div class="p-8 relative">
                             <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -585,7 +585,7 @@
 
                 <a href="/flea-market" class="group block">
                     <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-orange-400">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-red-600/20 rounded-bl-full"></div>
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-orange-100 to-red-100 rounded-bl-full"></div>
                         <div class="p-8 relative">
                             <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -609,7 +609,7 @@
         {{-- Web・クリエイター --}}
         <section class="mb-20">
             <div class="flex items-center gap-3 mb-8">
-                <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center">
+                <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                     </svg>
@@ -621,7 +621,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <a href="/aspect-ratio" class="group block">
                     <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-pink-400">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-400/20 to-rose-600/20 rounded-bl-full"></div>
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-100 to-rose-100 rounded-bl-full"></div>
                         <div class="p-8 relative">
                             <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -642,7 +642,7 @@
 
                 <a href="/px-rem" class="group block">
                     <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-pink-400">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-400/20 to-rose-600/20 rounded-bl-full"></div>
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-100 to-rose-100 rounded-bl-full"></div>
                         <div class="p-8 relative">
                             <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -666,7 +666,7 @@
         {{-- 生活・実用 (Append) --}}
         <section class="mb-20">
             <div class="flex items-center gap-3 mb-8">
-                <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
+                <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                     </svg>
@@ -679,7 +679,7 @@
                 {{-- Existing tools --}}
                 <a href="/moving-cost" class="group block">
                     <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-cyan-400">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-bl-full"></div>
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-bl-full"></div>
                         <div class="p-8 relative">
                             <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -700,7 +700,7 @@
 
                 <a href="/car-cost" class="group block">
                     <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-blue-400">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-bl-full"></div>
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-bl-full"></div>
                         <div class="p-8 relative">
                             <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -723,7 +723,7 @@
                 {{-- New Life Tools Updated Colors --}}
                 <a href="/electricity-cost" class="group block">
                     <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-cyan-400">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-bl-full"></div>
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-bl-full"></div>
                         <div class="p-8 relative">
                             <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -744,7 +744,7 @@
 
                 <a href="/time-value" class="group block">
                     <div class="relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-transparent hover:border-blue-400">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-bl-full"></div>
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-bl-full"></div>
                         <div class="p-8 relative">
                             <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -822,4 +822,50 @@
         </div>
     </div>
 
+    {{-- よくある質問 --}}
+    <section class="max-w-7xl mx-auto px-4 mb-20">
+        <h2 class="text-3xl font-bold text-gray-800 text-center mb-10">よくある質問</h2>
+        <div class="max-w-3xl mx-auto space-y-6">
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+                <h3 class="font-bold text-lg text-gray-800 mb-2 flex items-center gap-2">
+                    <span class="text-purple-600">Q.</span> 利用にお金はかかりますか？
+                </h3>
+                <p class="text-gray-600 pl-6">
+                    いいえ、すべてのツールを完全無料でご利用いただけます。課金要素も一切ありません。
+                </p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+                <h3 class="font-bold text-lg text-gray-800 mb-2 flex items-center gap-2">
+                    <span class="text-purple-600">Q.</span> アプリのインストールは必要ですか？
+                </h3>
+                <p class="text-gray-600 pl-6">
+                    いいえ、ブラウザ上で動作するためインストールの必要はありません。PC、スマホ、タブレットですぐに使えます。
+                </p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100">
+                <h3 class="font-bold text-lg text-gray-800 mb-2 flex items-center gap-2">
+                    <span class="text-purple-600">Q.</span> 入力したデータは保存されますか？
+                </h3>
+                <p class="text-gray-600 pl-6">
+                    いいえ、入力データはサーバーに保存されません。計算結果は現在のセッションでのみ表示されるため、プライバシーも安心です。
+                </p>
+            </div>
+        </div>
+    </section>
+
 </div>
+
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "WebSite",
+  "name": "計算ラボ",
+  "url": "{{ config('app.url') }}",
+  "description": "ビジネスから日常まで、あらゆる計算を瞬時に実行できる無料ツール集。",
+  "potentialAction": {
+    "@@type": "SearchAction",
+    "target": "{{ config('app.url') }}/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>

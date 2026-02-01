@@ -1,15 +1,19 @@
-<div class="min-h-screen bg-gradient-to-br from-slate-50 via-red-50 to-pink-100 py-8">
+<div class="min-h-screen bg-gradient-to-br from-slate-50 via-green-50 to-emerald-100 py-8 relative overflow-hidden">
+    {{-- Background Decoration --}}
+    <div class="absolute inset-0 z-0 pointer-events-none">
+        <div class="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-green-200/40 blur-[100px] animate-pulse"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-200/40 blur-[100px]"></div>
+    </div>
 
     {{-- Breadcrumb --}}
     <div class="max-w-6xl mx-auto px-4 mb-6">
         <nav class="text-sm text-gray-600" aria-label="Breadcrumb">
             <ol class="flex items-center space-x-2">
                 <li>
-                    <a href="/" class="hover:text-red-600 transition-colors flex items-center">
+                    <a href="/" class="hover:text-green-600 transition-colors flex items-center">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                            </path>
+                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                         </svg>
                         ホーム
                     </a>
@@ -24,7 +28,7 @@
 
         {{-- Hero Section --}}
         <div
-            class="relative overflow-hidden bg-gradient-to-br from-red-600 via-pink-600 to-rose-700 rounded-3xl shadow-2xl mb-8 p-8 md:p-12">
+            class="relative overflow-hidden bg-gradient-to-br from-green-600 via-emerald-600 to-teal-700 rounded-3xl shadow-2xl mb-8 p-8 md:p-12 text-white">
             <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
             <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full -ml-24 -mb-24"></div>
 
@@ -42,50 +46,35 @@
                 <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 text-center md:text-left">
                     BMI・適正体重計算
                 </h1>
-                <p class="text-lg md:text-xl text-red-100 text-center md:text-left max-w-2xl">
+                <p class="text-lg md:text-xl text-green-100 text-center md:text-left max-w-2xl">
                     身長と体重からBMI値を算出。肥満度判定と健康アドバイス付き。
                 </p>
             </div>
         </div>
 
-        {{-- 使い方ガイド --}}
-        <div
-            class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 shadow-lg border-2 border-red-200/50 hover:border-red-300 transition-colors">
-            <div class="flex items-start gap-4">
-                <div class="flex-shrink-0">
-                    <div class="bg-gradient-to-br from-red-500 to-pink-600 rounded-2xl p-3 shadow-lg">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
+        {{-- 便利ポイント --}}
+        <div class="bg-white/90 backdrop-blur-sm rounded-3xl p-8 mb-8 shadow-xl border border-green-100">
+            <h3 class="font-bold text-gray-800 mb-6 text-xl flex items-center gap-2">
+                <span class="w-1.5 h-6 bg-green-500 rounded-full"></span>
+                💡 健康管理の第一歩
+            </h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @php
+                    $points = [
+                        '現在の体重が「肥満」「普通」「低体重」のどこに該当するか確認',
+                        '最も病気になりにくいとされる「適正体重（BMI 22）」の把握',
+                        'ダイエットや増量の際の具体的な目標数値（kg）の設定',
+                        '家族や友人の健康状態を簡易的にチェックする際のツールに',
+                        '健康診断の結果を受けた後の生活習慣改善の動機付け',
+                        'アスリートや筋トレ愛愛好家の体格指数管理（参考値として）'
+                    ];
+                @endphp
+                @foreach($points as $point)
+                <div class="bg-green-50/50 p-4 rounded-xl border border-green-100 flex items-start gap-3 transition-all hover:shadow-md group">
+                    <span class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0 group-hover:scale-125 transition-transform"></span>
+                    <p class="text-sm text-gray-700 leading-relaxed">{{ $point }}</p>
                 </div>
-                <div class="flex-1">
-                    <h3 class="font-bold text-gray-800 mb-3 text-lg">💡 健康管理の第一歩</h3>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <div class="flex items-start gap-2">
-                            <div
-                                class="w-6 h-6 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <span class="text-red-600 font-bold text-sm">1</span>
-                            </div>
-                            <p class="text-sm text-gray-600">自分の体型が標準かチェック</p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <div
-                                class="w-6 h-6 bg-pink-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <span class="text-pink-600 font-bold text-sm">2</span>
-                            </div>
-                            <p class="text-sm text-gray-600">ダイエット・増量の目標設定</p>
-                        </div>
-                        <div class="flex items-start gap-2">
-                            <div
-                                class="w-6 h-6 bg-rose-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-                                <span class="text-rose-600 font-bold text-sm">3</span>
-                            </div>
-                            <p class="text-sm text-gray-600">健康診断の参考データに</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
 
@@ -94,7 +83,7 @@
 
             <div class="mb-8">
                 <h2 class="text-2xl md:text-3xl font-bold mb-2 text-gray-800 flex items-center gap-2">
-                    <span class="w-2 h-8 bg-gradient-to-b from-red-500 to-pink-600 rounded-full"></span>
+                    <span class="w-2 h-8 bg-gradient-to-b from-green-500 to-emerald-600 rounded-full"></span>
                     身体データを入力
                 </h2>
                 <p class="text-sm text-gray-500 ml-4">現在の身長と体重を入力してください</p>
@@ -104,11 +93,11 @@
                 <div class="space-y-3">
                     <label class="flex items-center text-sm font-bold text-gray-700">
                         <span
-                            class="bg-gradient-to-br from-red-500 to-pink-600 text-white rounded-xl w-7 h-7 flex items-center justify-center text-xs mr-3 shadow-md">1</span>
+                            class="bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-xl w-7 h-7 flex items-center justify-center text-xs mr-3 shadow-md">1</span>
                         身長(cm)
                     </label>
                     <input type="number" step="0.1" wire:model.live="height"
-                        class="w-full border-2 border-gray-200 focus:border-red-500 focus:ring-4 focus:ring-red-100 rounded-xl p-4 text-lg font-semibold transition-all"
+                        class="w-full border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-100 rounded-xl p-4 text-lg font-semibold transition-all"
                         placeholder="170">
                     <p class="text-xs text-gray-500 ml-1">例: 170.5cm</p>
                 </div>
@@ -116,11 +105,11 @@
                 <div class="space-y-3">
                     <label class="flex items-center text-sm font-bold text-gray-700">
                         <span
-                            class="bg-gradient-to-br from-red-500 to-pink-600 text-white rounded-xl w-7 h-7 flex items-center justify-center text-xs mr-3 shadow-md">2</span>
+                            class="bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-xl w-7 h-7 flex items-center justify-center text-xs mr-3 shadow-md">2</span>
                         体重(kg)
                     </label>
                     <input type="number" step="0.1" wire:model.live="weight"
-                        class="w-full border-2 border-gray-200 focus:border-red-500 focus:ring-4 focus:ring-red-100 rounded-xl p-4 text-lg font-semibold transition-all"
+                        class="w-full border-2 border-gray-200 focus:border-green-500 focus:ring-4 focus:ring-green-100 rounded-xl p-4 text-lg font-semibold transition-all"
                         placeholder="65">
                     <p class="text-xs text-gray-500 ml-1">例: 65.5kg</p>
                 </div>
@@ -128,14 +117,14 @@
 
             {{-- 結果表示 --}}
             <div
-                class="relative overflow-hidden bg-gradient-to-br from-slate-50 to-red-50 rounded-2xl p-8 border-2 border-red-100 shadow-inner">
+                class="relative overflow-hidden bg-gradient-to-br from-slate-50 to-green-50 rounded-2xl p-8 border-2 border-green-100 shadow-inner">
                 <div
                     class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-red-400/10 to-pink-600/10 rounded-full -mr-20 -mt-20">
                 </div>
 
                 <div class="relative">
                     <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
                             </path>
@@ -145,10 +134,10 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                         <div
-                            class="bg-gradient-to-br from-red-500 to-pink-600 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
-                            <p class="text-xs text-red-100 mb-2 font-semibold">あなたのBMI</p>
+                            class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                            <p class="text-xs text-green-100 mb-2 font-semibold">あなたのBMI</p>
                             <p class="text-5xl font-bold text-white mb-1">{{ number_format($bmi, 1) }}</p>
-                            <p class="text-xs text-red-200">Body Mass Index</p>
+                            <p class="text-xs text-green-200">Body Mass Index</p>
                         </div>
 
                         <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
@@ -221,40 +210,25 @@
             </div>
 
             <div class="space-y-6">
-                <div
-                    class="border-l-4 border-red-500 pl-6 py-4 bg-gradient-to-r from-red-50/50 to-transparent rounded-r-xl hover:from-red-50 transition-colors">
-                    <h3 class="font-bold text-gray-800 mb-3 text-lg flex items-center gap-2">
-                        <span class="text-red-600">Q.</span>
-                        BMI22が最も健康的なの?
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        <span class="font-semibold text-red-600">A.</span>
-                        統計的にBMI22前後が最も病気になりにくいとされています。ただし、筋肉量や体脂肪率も重要な指標です。
-                    </p>
+                <div class="border-l-4 border-green-500 pl-6 py-4 bg-gradient-to-r from-green-50/50 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. BMI 22が最も健康的なのはなぜ？</h3>
+                    <p class="text-gray-600">日本肥満学会などの統計により、BMI 22前後が糖尿病、高血圧、脂質異常症などの生活習慣病に最もかかりにくいとされているためです。</p>
                 </div>
-
-                <div
-                    class="border-l-4 border-pink-500 pl-6 py-4 bg-gradient-to-r from-pink-50/50 to-transparent rounded-r-xl hover:from-pink-50 transition-colors">
-                    <h3 class="font-bold text-gray-800 mb-3 text-lg flex items-center gap-2">
-                        <span class="text-pink-600">Q.</span>
-                        筋肉質でもBMIは高くなる?
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        <span class="font-semibold text-pink-600">A.</span>
-                        はい、筋肉は脂肪より重いため、アスリートなどはBMIが高めになります。体脂肪率も併せて確認することをおすすめします。
-                    </p>
+                <div class="border-l-4 border-emerald-500 pl-6 py-4 bg-gradient-to-r from-emerald-50/50 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 筋肉量が多いとBMIはどうなりますか？</h3>
+                    <p class="text-gray-600">筋肉は脂肪よりも重いため、ボディービルダーやスポーツ選手などは体脂肪が少なくてもBMIが高くなり「肥満」と判定されることがあります。その場合は体脂肪率を重視しましょう。</p>
                 </div>
-
-                <div
-                    class="border-l-4 border-rose-500 pl-6 py-4 bg-gradient-to-r from-rose-50/50 to-transparent rounded-r-xl hover:from-rose-50 transition-colors">
-                    <h3 class="font-bold text-gray-800 mb-3 text-lg flex items-center gap-2">
-                        <span class="text-rose-600">Q.</span>
-                        BMIだけで健康状態は判断できる?
-                    </h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        <span class="font-semibold text-rose-600">A.</span>
-                        BMIは目安の一つです。正確な健康状態は、体脂肪率、内臓脂肪、血液検査なども含めて総合的に判断する必要があります。
-                    </p>
+                <div class="border-l-4 border-teal-500 pl-6 py-4 bg-gradient-to-r from-teal-50/50 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 高齢者のBMIの考え方は？</h3>
+                    <p class="text-gray-600">高齢者の場合、少し高めのBMI（22〜25程度）の方がフレイル（虚弱）や身体機能低下を防ぎ、長生きするという研究結果もあります。痩せすぎには特に注意が必要です。</p>
+                </div>
+                <div class="border-l-4 border-green-500 pl-6 py-4 bg-gradient-to-r from-green-50/50 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 子供の肥満判定にもBMIを使えますか？</h3>
+                    <p class="text-gray-600">子供（幼児・学童）の場合は、BMIではなく「カウプ指数」や「ローレル指数」、または肥満度（％）という指標を用いるのが一般的です。大人と同じ基準では判定できません。</p>
+                </div>
+                <div class="border-l-4 border-emerald-500 pl-6 py-4 bg-gradient-to-r from-emerald-50/50 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. BMIを減らすために最も効果的なことは？</h3>
+                    <p class="text-gray-600">基本は「消費カロリー ＞ 摂取カロリー」にすることです。無理な食事制限ではなく、バランスの良い食事と適度な有酸素運動・筋トレを組み合わせるのが健康的な減量のコツです。</p>
                 </div>
             </div>
         </div>
