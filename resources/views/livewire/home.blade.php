@@ -60,6 +60,12 @@
         </div>
     </div>
 
+    <div class="max-w-full mx-auto px-4 mt-4 text-center">
+        <!-- admax -->
+        <script src="https://adm.shinobi.jp/s/e7c40b220df4af0f6ef318a6802052b1"></script>
+        <!-- admax -->
+    </div>
+
     {{-- Category Sections --}}
     <div class="max-w-7xl mx-auto px-4 pb-20">
 
