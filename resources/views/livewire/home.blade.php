@@ -60,9 +60,15 @@
         </div>
     </div>
 
-    <div class="max-w-full mx-auto px-4 mt-4 text-center">
+    <div class="max-w-full mx-auto px-4 mt-4 text-center hidden md:block">
         <!-- admax -->
         <script src="https://adm.shinobi.jp/s/e7c40b220df4af0f6ef318a6802052b1"></script>
+        <!-- admax -->
+    </div>
+
+    <div class="max-w-full mx-auto px-4 mt-4 text-center sm:block md:hidden">
+        <!-- admax -->
+        <script src="https://adm.shinobi.jp/s/7fc6edbdf6bd4fa70deb12902f2d0a96"></script>
         <!-- admax -->
     </div>
 
