@@ -1,4 +1,86 @@
 <div class="min-h-screen bg-gradient-to-br from-slate-50 via-green-50 to-emerald-100 py-8 relative overflow-hidden">
+    @php
+        $title = 'BMI計算機 | 適正体重と肥満度を即座に判定';
+        $description = '身長と体重からBMI（体格指数）を自動計算。適正体重、肥満度判定、健康アドバイスを表示。ダイエットや健康管理の第一歩に。';
+    @endphp
+    <x-slot name="title">{{ $title }}</x-slot>
+    <x-slot name="description">{{ $description }}</x-slot>
+
+    {{-- 構造化データ --}}
+    <x-slot name="structuredData">
+        <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'SoftwareApplication',
+                    'name' => 'BMI計算機',
+                    'description' => '身長と体重からBMI（体格指数）を自動計算。適正体重、肥満度判定、健康アドバイスを表示。ダイエットや健康管理の第一歩に。',
+                    'url' => url()->current(),
+                    'applicationCategory' => 'HealthApplication',
+                    'operatingSystem' => 'Any',
+                    'offers' => [
+                        '@type' => 'Offer',
+                        'price' => '0',
+                        'priceCurrency' => 'JPY'
+                    ],
+                    'featureList' => [
+                        'BMI自動計算',
+                        '適正体重表示',
+                        '肥満度判定',
+                        '健康アドバイス提供'
+                    ]
+                ],
+                [
+                    '@type' => 'BreadcrumbList',
+                    'itemListElement' => [
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 1,
+                            'name' => 'ホーム',
+                            'item' => url('/')
+                        ],
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 2,
+                            'name' => 'BMI計算機'
+                        ]
+                    ]
+                ],
+                [
+                    '@type' => 'FAQPage',
+                    'mainEntity' => [
+                        [
+                            '@type' => 'Question',
+                            'name' => 'BMI 22が最も健康的なのはなぜ？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '日本肥満学会などの統計により、BMI 22前後が糖尿病、高血圧、脂質異常症などの生活習慣病に最もかかりにくいとされているためです。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '筋肉量が多いとBMIはどうなりますか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '筋肉は脂肪よりも重いため、ボディービルダーやスポーツ選手などは体脂肪が少なくてもBMIが高くなり「肥満」と判定されることがあります。その場合は体脂肪率を重視しましょう。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '高齢者のBMIの考え方は？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '高齢者の場合、少し高めのBMI（22〜25程度）の方がフレイル（虚弱）や身体機能低下を防ぎ、長生きするという研究結果もあります。痩せすぎには特に注意が必要です。'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+        </script>
+    </x-slot>
+
     {{-- Background Decoration --}}
     <div class="absolute inset-0 z-0 pointer-events-none">
         <div class="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-green-200/40 blur-[100px] animate-pulse"></div>
@@ -199,6 +281,220 @@
                         </p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        {{-- 詳細説明セクション --}}
+        <x-content-section
+            title="BMI計算機とは？"
+            icon="info"
+            category-color="green">
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                BMI計算機は、身長と体重から「BMI（Body Mass Index：体格指数）」を自動計算し、肥満度を判定する無料ツールです。
+                BMIは世界保健機関（WHO）が定めた国際的な肥満判定基準で、身長の二乗に対する体重の比率を数値化したものです。
+                計算式は「体重(kg) ÷ 身長(m)²」で、例えば身長170cm・体重65kgの場合、BMIは約22.5となります。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                日本肥満学会では、BMI 18.5未満を「低体重」、18.5以上25未満を「普通体重」、25以上を「肥満」と分類しています。
+                特にBMI 22は統計的に最も病気になりにくい「適正体重」とされ、生活習慣病のリスクが最小になるとされています。
+                このツールでは、現在のBMI値だけでなく、適正体重（BMI 22）までの増減量も表示するため、
+                ダイエットや増量の具体的な目標設定に役立ちます。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                ただし、BMIは筋肉量や体脂肪率を考慮しないため、筋肉質な方は「肥満」と判定されることがあります。
+                あくまで簡易的な健康指標として活用し、より詳細な健康状態は医師や栄養士に相談することをお勧めします。
+            </p>
+        </x-content-section>
+
+        {{-- 重要用語解説 --}}
+        <x-content-section
+            title="知っておきたい重要用語"
+            icon="book"
+            category-color="green">
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <x-term-definition
+                    term="BMI（Body Mass Index）"
+                    category-color="green">
+                    体重と身長から算出される肥満度を表す体格指数。計算式は「体重(kg) ÷ 身長(m)²」。
+                    WHOや日本肥満学会が採用する国際基準で、18.5未満が低体重、18.5〜25が普通体重、25以上が肥満とされる。
+                    簡便で客観的な指標だが、筋肉量や体脂肪率は反映されないため、アスリートなどは注意が必要。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="適正体重（標準体重）"
+                    category-color="green">
+                    BMI 22となる体重のこと。統計的に最も病気にかかりにくく、健康的とされる体重。
+                    計算式は「身長(m)² × 22」。例えば身長170cmの場合、適正体重は約63.6kg。
+                    ダイエットや増量の目標値として広く活用されている。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="肥満度（％）"
+                    category-color="green">
+                    適正体重に対して現在の体重がどれだけ多いか（または少ないか）を示す指標。
+                    計算式は「(実測体重 - 適正体重) ÷ 適正体重 × 100」。
+                    +20%以上で軽度肥満、+50%以上で高度肥満とされる。子供の肥満判定にも用いられる。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="メタボリックシンドローム"
+                    category-color="green">
+                    内臓脂肪型肥満に加え、高血圧・高血糖・脂質異常のうち2つ以上を併せ持つ状態。
+                    BMIが25以上かつ腹囲が男性85cm以上、女性90cm以上が診断基準の一つ。
+                    心筋梗塞や脳卒中のリスクが高まるため、早期の生活習慣改善が重要。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="体脂肪率"
+                    category-color="green">
+                    体重に占める脂肪の割合（％）。BMIでは筋肉と脂肪を区別できないため、
+                    体脂肪率を併用することでより正確な肥満判定が可能になる。
+                    男性は15〜20%、女性は20〜25%が標準とされる。体組成計で測定できる。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="内臓脂肪型肥満と皮下脂肪型肥満"
+                    category-color="green">
+                    内臓脂肪型は腹部に脂肪が蓄積するタイプで、メタボリックシンドロームのリスクが高い。男性に多い「りんご型」。
+                    皮下脂肪型は臀部や太ももに脂肪がつくタイプで、女性に多い「洋なし型」。健康リスクは内臓脂肪型より低い。
+                    腹囲を測定することで、内臓脂肪の蓄積をチェックできる。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="フレイル（老年病弱）"
+                    category-color="green">
+                    加齢により筋力や心身の活力が低下し、健康障害を起こしやすくなった状態。痩せすぎがリスクを高める。
+                    高齢者の場合、BMIが18.5未満の低体重はフレイルのリスクが高まるため、適度な体重維持が重要。
+                    筋力トレーニングとタンパク質摂取で予防できる。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="ローレル指数（学童用）"
+                    category-color="green">
+                    学童（小中学生）の肥満度を判定する指標。計算式は「体重（kg）÷ 身長（cm）³ × 10^7」。
+                    学童は成長期のため、大人と同じBMI基準では判定できない。ローレル指数の標準値は115～145程度。
+                    学校の健康診断でも使われる指標。
+                </x-term-definition>
+            </div>
+        </x-content-section>
+
+        {{-- ケーススタディ --}}
+        <x-case-study
+            title="BMI 28の会社員が3ヶ月で適正体重を達成"
+            category-color="green">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        不規則な生活で肥満1度判定
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>身長170cm、体重81kg、BMI 28.0（肥満1度）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>適正体重まで約17kg減量が必要</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>健康診断で血圧・血糖値に異常値</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>階段で息切れ、慢性的な疲労感</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        食事改善＋運動習慣で健康体重に
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>3ヶ月後：体重65kg、BMI 22.5（普通体重）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>適正体重を達成、16kg減量成功</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>血圧・血糖値が正常範囲に改善</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>体力向上、疲れにくい体質に変化</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-green-50 rounded-xl border-l-4 border-green-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-green-700">改善のポイント：</strong>
+                    BMI計算機で現状を数値化したことで、「なんとなく太っている」から「17kg減らす」という具体的な目標に変わりました。
+                    食事は糖質を適度に制限し、タンパク質と野菜を増やす方法を採用。運動は週3回の30分ウォーキングと軽い筋トレを継続。
+                    無理な食事制限ではなく、1ヶ月あたり5kg程度のペースで健康的に減量したことで、リバウンドせず体重を維持できています。
+                    BMIを定期的に測定することで、モチベーションを保ちながら目標達成できました。
+                </p>
+            </div>
+        </x-case-study>
+
+        {{-- 関連ツール --}}
+        @php
+            $relatedTools = [
+                [
+                    'name' => 'NISA・iDeCoシミュレーター',
+                    'url' => '/nisa-ideco',
+                    'description' => '健康的な体を維持しながら資産形成',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>',
+                ],
+                [
+                    'name' => '基礎代謝計算',
+                    'url' => '/basal-metabolic-rate',
+                    'description' => '1日に必要なカロリーを計算',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>',
+                ],
+                [
+                    'name' => 'カロリー計算ツール',
+                    'url' => '/calorie-calculator',
+                    'description' => '食事のカロリーを簡単に計算',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>',
+                ],
+            ];
+        @endphp
+
+        <x-related-tools :tools="$relatedTools" category-color="green" />
+
+        {{-- 広告（楽天ウィジェット 600x200） --}}
+        <div class="mb-8 flex justify-center opacity-80 hover:opacity-100 transition-opacity">
+            <div class="max-w-full overflow-hidden">
+                <script type="text/javascript">
+                    rakuten_design = "slide";
+                    rakuten_affiliateId = "50456315.a7115187.50456316.6028b4a0";
+                    rakuten_items = "ranking";
+                    rakuten_genreId = "0";
+                    rakuten_size = "600x200";
+                    rakuten_target = "_blank";
+                    rakuten_theme = "gray";
+                    rakuten_border = "off";
+                    rakuten_auto_mode = "on";
+                    rakuten_genre_title = "off";
+                    rakuten_recommend = "on";
+                    rakuten_ts = "1769353251239";
+                </script>
+                <script type="text/javascript"
+                    src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
             </div>
         </div>
 

@@ -12,6 +12,105 @@
     <x-slot name="title">{{ $title }}</x-slot>
     <x-slot name="description">{{ $description }}</x-slot>
 
+    {{-- 構造化データ --}}
+    <x-slot name="structuredData">
+        <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'SoftwareApplication',
+                    'name' => 'アスペクト比計算ツール',
+                    'description' => '動画編集や画像作成に。幅や高さ、比率から不足している数値を瞬時に計算。SNS投稿、バナー、動画解像度の設計をサポートするクリエイター向けツール。',
+                    'url' => url()->current(),
+                    'applicationCategory' => 'DesignApplication',
+                    'operatingSystem' => 'Any',
+                    'offers' => [
+                        '@type' => 'Offer',
+                        'price' => '0',
+                        'priceCurrency' => 'JPY'
+                    ],
+                    'featureList' => [
+                        'アスペクト比自動計算',
+                        '解像度算出',
+                        'プリセット機能',
+                        'ビジュアルプレビュー'
+                    ]
+                ],
+                [
+                    '@type' => 'BreadcrumbList',
+                    'itemListElement' => [
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 1,
+                            'name' => 'ホーム',
+                            'item' => url('/')
+                        ],
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 2,
+                            'name' => 'アスペクト比計算'
+                        ]
+                    ]
+                ],
+                [
+                    '@type' => 'FAQPage',
+                    'mainEntity' => [
+                        [
+                            '@type' => 'Question',
+                            'name' => '4K解像度は具体的に何ピクセルですか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '一般的なテレビやモニターの4K（UHD）は、桒3840px × 縦2160pxです。これはフルHD（1920×1080）のちょうど4倍の面積、比率は16:9です。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '「シネマスコープ」の比率を教えてください。',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '映画でよく使われる非常に横に長い比率で、2.35:1 や 2.39:1 が一般的です。最近のウルトラワイドモニターでよく使われる 21:9 もこれに近い比率です。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '黄金比（1:1.618）はデザインにどう使いますか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '例えばブログの「本文エリア」と「サイドバー」の比率を1.618:1にしたり、名刺のサイズを決める際に使用したりします。自然界にも存在する安定感のある美しい比率とされています。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => 'iPhoneで撮影した写真の比率は？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '標準設定では 4:3 ですが、設定により 16:9 やスクエア（1:1）での撮影も可能です。動画の場合は基本的に 16:9（またはスローモーションやシネマティックならその派生）になります。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '端数が出た場合はどう処理すべきですか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '1px未満の小数点が出た場合は、切り捨てまたは切り上げて「整数」にするのが基本です。ただし、一部のコーディング（CSS）では正確な動作のために四捨五入が必要な場合もあります。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => 'アスペクト比がずれるとどうなりますか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '画像が不自然に引き伸ばされたり（歪み）、意図しない部分がカットされたり、上下左右に黒い帯（レターボックス/サイドボックス）が表示されたりします。'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+        </script>
+    </x-slot>
+
     <div class="relative z-10 max-w-6xl mx-auto px-4">
 
         {{-- Breadcrumb --}}
@@ -281,6 +380,193 @@
                         高さ: 500 px
                     </p>
                 </div>
+            </div>
+        </div>
+
+        {{-- 詳細説明セクション --}}
+        <x-content-section
+            title="アスペクト比計算ツールとは？"
+            icon="info"
+            category-color="pink">
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                アスペクト比計算ツールは、動画編集や画像作成に必要なアスペクト比を自動計算する無料ツールです。
+                幅や高さ、比率から不足している数値を瞬時に算出し、SNS投稿、バナー、動画解像度の設計をサポートします。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                16:9「1:1、9:16などの一般的な比率はプリセットでワンクリック選択。黄金比（1:1.618）やシネマスコープ（2.35:1）などの特殊な比率も自由に入力できます。
+                ビジュアルプレビュー機能で、設定した比率がどのような形になるかを直感的に確認できます。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                「幅は決まっているけど高さがわからない」というシーンで大活躍。
+                クリエイターの必携ツールとして、美しい画像・動画作成をサポートします。
+            </p>
+        </x-content-section>
+
+        {{-- 重要用語解説 --}}
+        <x-content-section
+            title="知っておきたい重要用語"
+            icon="book"
+            category-color="pink">
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <x-term-definition
+                    term="16:9（ワイドスクリーン）"
+                    category-color="pink">
+                    フルHD、4Kテレビ、YouTube、プレゼン資料などで最も一般的な比率。1920×1080（フルHD）、3840×2160（4K）が代表的。
+                    横長の形状で、人間の視野に近いため見やすい。動画編集ではデフォルト設定として最適。
+                    スマホを横にした状態や、PCモニターの標準比率。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="9:16（縦長・スマホ用）"
+                    category-color="pink">
+                    Instagramストーリー、TikTok、YouTubeショーツなどのスマホ縦持ち動画用の比率16:9を田90度回転した形。
+                    1080×1920が一般的。スマホ画面をフルに使えるため、視聴者の注目を集めやすい。
+                    SNSマーケティングでは必須の比率。横長動画を縦長に変換する際はトリミングが必要。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="1:1（正方形・スクエア）"
+                    category-color="pink">
+                    Instagramフィード投稿、プロフィール画像、アイコンなどで使用される正方形。1080×1080が一般的。
+                    上下左右の余白がなく、バランスが良い。装飾的なデザインや、商品写真に最適。
+                    プリントや名刺、CDジャケットなど、物理的なメディアでも使われる。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="黄金比（1:1.618）"
+                    category-color="pink">
+                    自然界に多く存在する「美しい」とされる比率。パルテノン神殿、モナリザなどの芸術作品にも使用。
+                    デザインでは、レイアウトの分割（サイドバーとメインコンテンツ）や、名刺・ポスターのサイズ決定に利用。
+                    視覚的に安定感と美しさを与えるため、プロデザイナーが好んで使う比率。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="シネマスコープ（2.35:1）"
+                    category-color="pink">
+                    映画館で使われる非常に横長の比率2.35:1または2.39:1。沈浸感とドラマチックな演出を生む。
+                    ウルトラワイドモニター（21:9）もこれに近い比率。映画風の動画や、シネマティックなVlogに使用。
+                    通常の16:9画面で再生すると上下に黒帯（レターボックス）が表示される。
+                </x-term-definition>
+            </div>
+        </x-content-section>
+
+        {{-- ケーススタディ --}}
+        <x-case-study
+            title="YouTubeサムネ由16:9でクリック率30%向上"
+            category-color="pink">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        適当なサイズで作成
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>サムネイルを1200×800pxで作成（3:2比率）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>YouTubeにアップロードすると上下に黒帯が表示</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>サムネイルが小さく見え、クリック率が低い</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>「なぜ黒帯が出るの？」と原因がわからず</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        16:9比率で正確に作成
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>本ツールで幅1280px、16:9から高さ720pxを算出</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>1280×720pxでサムネイルを作成</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>黒帯なしで画面をフル活用、視認性向上</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>クリック率30%向上、視聴回数が増加</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-pink-50 rounded-xl border-l-4 border-pink-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-pink-700">改善のポイント：</strong>
+                    YouTubeサムネイルの推奨サイズは1280×720px（16:9）です。違う比率で作成すると、上下または左右に黒帯が表示され、サムネイルが小さく見えてしまいます。
+                    本ツールで正確なアスペクト比を計算することで、画面をフル活用したインパクトのあるサムネイルを作成できます。
+                    特にSNSや動画プラットフォームでは、各プラットフォームの推奨サイズに合わせることが、エンゲージメント向上の鍵となります。
+                    アスペクト比を正しく設定するだけで、プロフェッショナルな仕上がりになります。
+                </p>
+            </div>
+        </x-case-study>
+
+        {{-- 関連ツール --}}
+        @php
+            $relatedTools = [
+                [
+                    'name' => '電気代計算',
+                    'url' => '/electricity-cost',
+                    'description' => '家電の電気代を算出',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>',
+                ],
+                [
+                    'name' => '請求書計算',
+                    'url' => '/invoice',
+                    'description' => '源泉徴収・消費税計算',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>',
+                ],
+                [
+                    'name' => 'ROI計算',
+                    'url' => '/roi-calculator',
+                    'description' => '投資対効果を分析',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>',
+                ],
+            ];
+        @endphp
+
+        <x-related-tools :tools="$relatedTools" category-color="pink" />
+
+        {{-- 広告（楽天ウィジェット 600x200） --}}
+        <div class="mb-8 flex justify-center opacity-80 hover:opacity-100 transition-opacity">
+            <div class="max-w-full overflow-hidden">
+                <script type="text/javascript">
+                    rakuten_design = "slide";
+                    rakuten_affiliateId = "50456315.a7115187.50456316.6028b4a0";
+                    rakuten_items = "ranking";
+                    rakuten_genreId = "0";
+                    rakuten_size = "600x200";
+                    rakuten_target = "_blank";
+                    rakuten_theme = "gray";
+                    rakuten_border = "off";
+                    rakuten_auto_mode = "on";
+                    rakuten_genre_title = "off";
+                    rakuten_recommend = "on";
+                    rakuten_ts = "1769353251239";
+                </script>
+                <script type="text/javascript"
+                    src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
             </div>
         </div>
 

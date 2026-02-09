@@ -12,6 +12,105 @@
     <x-slot name="title">{{ $title }}</x-slot>
     <x-slot name="description">{{ $description }}</x-slot>
 
+    {{-- 構造化データ --}}
+    <x-slot name="structuredData">
+        <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'SoftwareApplication',
+                    'name' => '源泉徴収・消費税計算ツール',
+                    'description' => 'フリーランスの請求書作成に欠かせない源泉徴収税と消費税を自動計算。報酬額からの算出だけでなく、手取り額からの逆算にも対応。',
+                    'url' => url()->current(),
+                    'applicationCategory' => 'BusinessApplication',
+                    'operatingSystem' => 'Any',
+                    'offers' => [
+                        '@type' => 'Offer',
+                        'price' => '0',
+                        'priceCurrency' => 'JPY'
+                    ],
+                    'featureList' => [
+                        '源泉徴収税自動計算',
+                        '消費税計算',
+                        '手取り額逆算',
+                        'インボイス制度対応'
+                    ]
+                ],
+                [
+                    '@type' => 'BreadcrumbList',
+                    'itemListElement' => [
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 1,
+                            'name' => 'ホーム',
+                            'item' => url('/')
+                        ],
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 2,
+                            'name' => '源泉徴収・消費税計算'
+                        ]
+                    ]
+                ],
+                [
+                    '@type' => 'FAQPage',
+                    'mainEntity' => [
+                        [
+                            '@type' => 'Question',
+                            'name' => '源泉徴収税を引くのは義務ですか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'クライアント（支払者）が会社や個人の事業主である場合、特定の報酬（原稿料、デザイン、翻訳等）を支払う際に税金を天引きして国に納める義務があります。報酬を受け取る側が引くのではなく、支払う側が処理します。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '消費税を請求してもいいのですか？（免税事業者の場合）',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'インボイス登録をしていない免税事業者であっても、従来通り「消費税相当額」を上乗せして請求することは法的に禁止されていません。ただし、取引先との契約関係やインボイス制度の導入背景により、価格交渉が発生する可能性があります。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '源泉徴収された税金は戻ってきますか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'はい、確定申告を行うことで戻ってくる可能性があります。天引きされた税金は「税金の前払い」のようなものなので、年間の総所得に対して納めすぎている場合は「還付金」として返ってきます。逆に足りない場合は追加で納めます。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '復興特別所得税とは何ですか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '東日本大震災からの復興財源を確保するための税金で、2037年まで通常の所得税に2.1%を上乗せして徴収されます。源泉徴収税率が10%キリではなく10.21%なのはこのためです。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '源泉徴収の対象にならない仕事はありますか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'システム開発（Webサイト制作の一部ではなく、純粋なシステム構築）、事務代行、清掃などは原則として源泉徴収の対象外とされています（※デザイン要素が含まれると対象になる場合があります）。詳細は税務署や税理士にご確認ください。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '手数料（システム利用料等）がある場合の計算は？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'クラウドソーシングサイト等では手数料が引かれますが、税務上の「報酬額」は手数料を引く前の【総額】です。本ツールに入力する際も、手数料を引く前の契約金額を入力してください。'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+        </script>
+    </x-slot>
+
     <div class="relative z-10 max-w-6xl mx-auto px-4">
 
         {{-- Breadcrumb --}}
@@ -277,6 +376,193 @@
                         <span>税引前:</span> <span>1,200,000 円</span>
                     </p>
                 </div>
+            </div>
+        </div>
+
+        {{-- 詳細説明セクション --}}
+        <x-content-section
+            title="源泉徴収・消費税計算ツールとは？"
+            icon="info"
+            category-color="orange">
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                源泉徴収・消費税計算ツールは、フリーランスの請求書作成に欠かせない源泉徴収税と消費税を自動計算する無料ツールです。
+                報酬額からの算出だけでなく、手取り額からの逆算にも対応し、インボイス制度にも完全対応しています。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                源泉徴収税は「報酬額×10.21%」（100万円超の部分は20.42%）で計算されます。消費税は標準税率10%で計算。
+                これらを正確に計算して請求書に記載することで、クライアントとのトラブルを防ぎ、確定申告もスムーズになります。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                「手取りでピッタリ20万円欲しい」という場合の逆算機能も搭載。
+                請求書作成の強い味方として、フリーランスの皆様をサポートします。
+            </p>
+        </x-content-section>
+
+        {{-- 重要用語解説 --}}
+        <x-content-section
+            title="知っておきたい重要用語"
+            icon="book"
+            category-color="orange">
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <x-term-definition
+                    term="源泉徴収税（復興特別所得税込）"
+                    category-color="orange">
+                    報酬を支払う側が、支払い時に税金を天引きして国に納める制度。税率は10.21%（100万円超の部分は20.42%）。
+                    復興特別所得税（2.1%）が含まれるため、10%ではなく10.21%になっている。2037年まで継続。
+                    天引きされた税金は確定申告で精算され、納めすぎていれば還付金として返ってくる。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="インボイス制度（適格請求書）"
+                    category-color="orange">
+                    2023年10月開始の制度。インボイス登録業者は「適格請求書」を発行し、消費税を正式に請求できる。
+                    免税事業者（年間売上1000万円以下）は登録任意だが、取引先が仕入税額控除を受けられないため、価格交渉の対象になる可能性。
+                    登録番号（T+13桁）を請求書に記載することで、取引先は消費税の控除を受けられる。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="源泉徴収の対象業務"
+                    category-color="orange">
+                    原稿料、デザイン、イラスト、翻訳、講演料、コンサルティング、士業報酬などが対象。
+                    システム開発（純粋なプログラミング）、事務代行、清掃などは原則対象外。ただしデザイン要素が含まれると対象になる場合も。
+                    対象かどうか不明な場合は、税務署や税理士に確認するのが確実。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="手取り額と請求額の関係"
+                    category-color="orange">
+                    手取り額＝請求額（税込）−源泉徴収税。消費税は手取り額に含まれる（源泉徴収の対象外）。
+                    「手取り20万円欲しい」場合、逆算して請求額を決める必要がある。本ツールの逆算機能が便利。
+                    クラウドソーシングサイトの手数料は、源泉徴収の計算には含めない（手数料を引く前の総額で計算）。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="100万円超の報酬の計算"
+                    category-color="orange">
+                    100万円以下の部分：10.21%、100万円超の部分：20.42%の2段階税率。
+                    例：120万円の報酬の場合、100万円×10.21%＋20万円×20.42%＝142,940円の源泉徴収。
+                    高額案件では源泉徴収額が大きくなるため、キャッシュフローに注意が必要。
+                </x-term-definition>
+            </div>
+        </x-content-section>
+
+        {{-- ケーススタディ --}}
+        <x-case-study
+            title="手取り額逆算で「手出し」を防止！請求額を正確に設定"
+            category-color="orange">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        報酬額だけで請求書を作成
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>「手取り20万円欲しい」と思い、報酬額20万円で請求</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>源泉徴収税：20万円×10.21%＝20,420円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>実際の振込額：179,580円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>「手取り20万円」に届かず、約2万円の誤算</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        手取り額から逆算して請求
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>本ツールで「手取り20万円」から逆算</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>必要な報酬額：222,716円（税抜）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>源泉徴収税：22,731円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>実際の振込額：ピッタリ20万円</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-orange-50 rounded-xl border-l-4 border-orange-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-orange-700">改善のポイント：</strong>
+                    「手取り額」と「請求額」は異なります。源泉徴収税が天引きされるため、手取りで20万円欲しい場合は、約22.3万円の報酬額で請求する必要があります。
+                    本ツールの逆算機能を使えば、希望の手取り額から必要な請求額を瞬時に算出できます。
+                    これにより「思ったより手取りが少ない」という誤算を防ぎ、正確な資金計画が立てられます。
+                    特にフリーランス初心者は、この計算ミスで生活費が足りなくなるケースが多いため、必ず逆算して請求しましょう。
+                </p>
+            </div>
+        </x-case-study>
+
+        {{-- 関連ツール --}}
+        @php
+            $relatedTools = [
+                [
+                    'name' => '給与計算',
+                    'url' => '/salary-calculator',
+                    'description' => '手取り給与を算出',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>',
+                ],
+                [
+                    'name' => '退職金計算',
+                    'url' => '/retirement-planning',
+                    'description' => '老後資金をシミュレーション',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>',
+                ],
+                [
+                    'name' => 'ROI計算',
+                    'url' => '/roi-calculator',
+                    'description' => '投資対効果を分析',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>',
+                ],
+            ];
+        @endphp
+
+        <x-related-tools :tools="$relatedTools" category-color="orange" />
+
+        {{-- 広告（楽天ウィジェット 600x200） --}}
+        <div class="mb-8 flex justify-center opacity-80 hover:opacity-100 transition-opacity">
+            <div class="max-w-full overflow-hidden">
+                <script type="text/javascript">
+                    rakuten_design = "slide";
+                    rakuten_affiliateId = "50456315.a7115187.50456316.6028b4a0";
+                    rakuten_items = "ranking";
+                    rakuten_genreId = "0";
+                    rakuten_size = "600x200";
+                    rakuten_target = "_blank";
+                    rakuten_theme = "gray";
+                    rakuten_border = "off";
+                    rakuten_auto_mode = "on";
+                    rakuten_genre_title = "off";
+                    rakuten_recommend = "on";
+                    rakuten_ts = "1769353251239";
+                </script>
+                <script type="text/javascript"
+                    src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
             </div>
         </div>
 

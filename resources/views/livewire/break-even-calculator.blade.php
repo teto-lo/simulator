@@ -12,6 +12,81 @@
     <x-slot name="title">{{ $title }}</x-slot>
     <x-slot name="description">{{ $description }}</x-slot>
 
+    {{-- 構造化データ --}}
+    <x-slot name="structuredData">
+        <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'SoftwareApplication',
+                    'name' => '損益分岐点計算シミュレーター',
+                    'description' => '固定費、変動費、販売価格から損益分岐点を自動計算。新規事業の売上目標設定や、コスト削減の効果試算、価格改定の判断に。貢献利益率も合わせて算出します。',
+                    'url' => url()->current(),
+                    'applicationCategory' => 'BusinessApplication',
+                    'operatingSystem' => 'Any',
+                    'offers' => [
+                        '@type' => 'Offer',
+                        'price' => '0',
+                        'priceCurrency' => 'JPY'
+                    ],
+                    'featureList' => [
+                        '損益分岐点計算',
+                        '貢献利益率表示',
+                        '必要販売数算出',
+                        '採算性判断'
+                    ]
+                ],
+                [
+                    '@type' => 'BreadcrumbList',
+                    'itemListElement' => [
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 1,
+                            'name' => 'ホーム',
+                            'item' => url('/')
+                        ],
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 2,
+                            'name' => '損益分岐点計算シミュレーター'
+                        ]
+                    ]
+                ],
+                [
+                    '@type' => 'FAQPage',
+                    'mainEntity' => [
+                        [
+                            '@type' => 'Question',
+                            'name' => '「損益分岐点（そんえきぶんきてん）」とは何ですか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '損益分岐点とは、売上高と費用の総額がちょうど等しくなり、利益が「ゼロ」になるポイントのことです。このラインを超えれば「黒字（利益）」、下回れば「赤字」となります。安全な経営のためには、実際の売上がこの損益分岐点をどれだけ上回っているか（安全余裕率）が重要です。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '固定費と変動費、どちらを下げるほうが効果的ですか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '状況によりますが、「固定費」を下げるとリスク耐性が強くなります。売上がゼロでも発生する費用が減るため、損益分岐点の位置そのものが大きく下がります。一方、「変動費」を下げると利益率（貢献利益率）が向上し、1個売るあたりの「黒字化への歩幅」が大きくなります。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '複数の商品を販売している場合の計算方法は？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '複数の商品がある場合は、全商品の平均的な単価と、平均的な原価（変動費）を使って計算するのが一般的です。より精密に算出したい場合は、売上構成比に基づいた「加重平均貢献利益率」を算出し、それを使って固定費を割る手法を取ります。'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+        </script>
+    </x-slot>
+
     <div class="relative z-10 max-w-6xl mx-auto px-4">
 
         {{-- Breadcrumb --}}
@@ -295,6 +370,349 @@
             </div>
         </div>
 
+        {{-- 詳細説明セクション --}}
+        <x-content-section
+            title="損益分岐点計算シミュレーターとは？"
+            icon="info"
+            category-color="purple">
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                損益分岐点計算シミュレーターは、固定費、変動費、販売価格から、「いくら売れば黒字化するか」を精密に算出する無料ツールです。
+                損益分岐点とは、売上と費用がちょうど釣り合うポイント。このラインを超えれば利益、下回れば赤字となります。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                計算式は「固定費 ÷ (販売価格 - 変動費)」。例えば、固定費100万円、商品価格1,000円、原価500円なら、
+                月間で2,000個販売で損益分岐点に達します。この数値が現実的かどうかで、ビジネスの採算性を判断できます。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                新規開業、店舗出店、新商品発売、価格改定、コスト削減など、あらゆるビジネス意思決定の基礎となる指標です。
+                「いくら売れば赤字を脱出できるか？」を明確に数値化し、ビジネスの健全性を診断します。
+            </p>
+        </x-content-section>
+
+        {{-- 重要用語解説 --}}
+        <x-content-section
+            title="知っておきたい重要用語"
+            icon="book"
+            category-color="purple">
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <x-term-definition
+                    term="固定費（Fixed Cost）"
+                    category-color="purple">
+                    売上の増減に関わらず、一定期間必ず発生する費用。家賃、正社員の給与、リース代、保険料など。
+                    売上がゼロでも支払う必要があるため、固定費が高いほど経営リスクが大きい。
+                    損益分岐点を下げるには、固定費の削減が最も効果的。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="変動費（Variable Cost）"
+                    category-color="purple">
+                    売上に比例して増減する費用。商品の仕入原価、材料費、送料、決済手数料など。
+                    1個売れるごとに発生するコスト。変動費を下げると、貢献利益率が向上し、少ない販売数でも黒字化できる。
+                    仕入れ先の見直しや業務効率化で削減可能。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="貢献利益（Contribution Margin）"
+                    category-color="purple">
+                    売上から変動費だけを引いた利益。「売上 - 変動費」で算出。粗利に近い概念。
+                    この利益が積み重なって固定費を回収し、固定費を超えた分が純利益になる。
+                    貢献利益率（貢献利益÷売上）が高いほど、少ない販売数で黒字化できる。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="安全余裕率"
+                    category-color="purple">
+                    現在の売上が損益分岐点をどれだけ上回っているかを示す指標。計算式は「(売上 - 損益分岐点売上) ÷ 売上 × 100」。
+                    安全余裕率が高いほど、景気変動や予期せぬコスト増加に対する耐性が強い。
+                    一般的に20%以上あれば安全、10%以下は危険水域とされる。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="損益分岐点比率"
+                    category-color="purple">
+                    売上高に対する損益分岐点売上高の割合。計算式は「損益分岐点売上 ÷ 売上 × 100」。
+                    80%以下で優良企業、90%以上で危険水域と言われる。比率が低いほど経営が安定。
+                    固定費削減や利益率向上で、この比率を下げることが経営改善の目標。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="限界利益率"
+                    category-color="purple">
+                    販売価格から変動費を引いた「貢献利益」の、販売価格に対する割合。計算式は「(販売価格 - 変動費) ÷ 販売価格 × 100」。
+                    例えば価格1,000円、原価600円なら限界利益率は40%。この比率が高いほど、少ない販売数で固定費を回収できる。
+                    値下げや原価上昇で低下するため、常に監視が必要。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="粗利益（粗利）"
+                    category-color="purple">
+                    売上高から売上原価を引いた利益。貢献利益とほぼ同じ意味だが、会計用語としては粗利益、
+                    管理会計用語としては貢献利益と呼ばれることが多い。粗利率が高いほど、少ない販売数で固定費をカバーできる。
+                    小売業では30～40%、飲食店は60～70%が目安とされる。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="キャッシュフロー計算書"
+                    category-color="purple">
+                    現金の入りと出を記録した資料。損益計算書は「利益」を計算するが、キャッシュフロー計算書は「現金」を追跡。
+                    損益分岐点を超えても、売上代金の回収が遅れれば資金ショートになるリスクがある。
+                    「黒字でも現金がない」状態を防ぐため、損益とキャッシュフロー両方を管理することが重要。
+                </x-term-definition>
+            </div>
+        </x-content-section>
+
+        {{-- ケーススタディ --}}
+        <x-case-study
+            title="固定費削減で損益分岐点が40%減少、経営安定化"
+            category-color="purple">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        高額な固定費で経営圧迫
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>固定費：月150万円（家賃》人件費）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>商品単価：5,000円、原価：2,000円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>損益分岐点：500個/月（売上250万円）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>実際売上：450個/月で毎月50個不足（赤字）</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        オフィス移転で固定費削減
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>固定費：月90万円（家賃40%削減）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>商品単価：5,000円、原価：2,000円（同じ）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>損益分岐点：300個/月（売上150万円）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>実際売上：450個/月で150個の余裕（黒字）</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-purple-50 rounded-xl border-l-4 border-purple-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-purple-700">改善のポイント：</strong>
+                    固定費を月60万円削減したことで、損益分岐点が500個から300個に低下（40%減）。
+                    同じ売上でも赤字から黒字に転換しました。オフィスを郊外の安い物件に移転し、家賃を大幅に削減。
+                    固定費は「売上がゼロでも発生する」ため、削減すると経営リスクが大幅に低下します。
+                    損益分岐点計算で「固定費削減のインパクト」を可視化し、経営判断に活用しましょう。
+                </p>
+            </div>
+        </x-case-study>
+        
+        <x-case-study
+            title="ケース2: 価格引き上げで販売数目標が30%減"
+            category-color="purple">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        低価格で販売数目標が高すぎ
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>固定費：月80万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>販売価格：3,000円、原価：1,500円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>損益分岐点：533個/月</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>目標達成が困難で売り急ぎ、在庫圧迫</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        適正価格で目標を現実的に
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>固定費：月80万円（同じ）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>販売価格：4,000円、原価：1,500円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>損益分岐点：320個/月（40%減）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>現実的な目標で無理なく達成！</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-purple-50 rounded-xl border-l-4 border-purple-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-purple-700">改善のポイント：</strong>
+                    価格を1,000円引き上げたことで、貢献利益が1,500円から2,500円に増加。その結果、損益分岐点が533個から320個に低下（40%減）。
+                    「安く売って数を稼ぐ」より、「適正価格で少ない数を売る」方が、経営が安定します。
+                    損益分岐点計算で「価格戦略のインパクト」を可視化しましょう。
+                </p>
+            </div>
+        </x-case-study>
+        
+        <x-case-study
+            title="ケース3: 変動費削減で利益率向上、黒字化加速"
+            category-color="purple">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        高い仕入れ原価で苦戦
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>固定費：月100万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>販売価格：10,000円、原価：7,000円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>貢献利益：3,000円/個（利益率30%）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>損益分岐点：333個/月</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        仕入れ先変更で原価削減
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>固定費：月100万円（同じ）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>販売価格：10,000円、原価：5,500円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>貢献利益：4,500円/個（利益率45%）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>損益分岐点：222個/月（33%減）</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-purple-50 rounded-xl border-l-4 border-purple-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-purple-700">改善のポイント：</strong>
+                    仕入れ先を見直し、原価を7,000円から5,500円に削減。1個あたりの貢献利益が3,000円から4,500円に増加し、
+                    損益分岐点が333個から222個に低下（33%減）。変動費削減は「1個売るごとの利益」を増やすため、
+                    黒字化へのスピードが加速します。仕入れ先の相見積もりや業務効率化で、変動費削減に取り組みましょう。
+                </p>
+            </div>
+        </x-case-study>
+
+        {{-- 関連ツール --}}
+        @php
+            $relatedTools = [
+                [
+                    'name' => 'ROI計算シミュレーター',
+                    'url' => '/roi-calculator',
+                    'description' => '投資対効果を数値化',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>',
+                ],
+                [
+                    'name' => '広告予算シミュレーター',
+                    'url' => '/ad-cost',
+                    'description' => '広告費の費用対効果を試算',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>',
+                ],
+                [
+                    'name' => 'ローン返済計算',
+                    'url' => '/loan-repayment',
+                    'description' => '返済計画をシミュレーション',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>',
+                ],
+            ];
+        @endphp
+
+        <x-related-tools :tools="$relatedTools" category-color="purple" />
+
+        {{-- 広告（楽天ウィジェット 600x200） --}}
+        <div class="mb-8 flex justify-center opacity-80 hover:opacity-100 transition-opacity">
+            <div class="max-w-full overflow-hidden">
+                <script type="text/javascript">
+                    rakuten_design = "slide";
+                    rakuten_affiliateId = "50456315.a7115187.50456316.6028b4a0";
+                    rakuten_items = "ranking";
+                    rakuten_genreId = "0";
+                    rakuten_size = "600x200";
+                    rakuten_target = "_blank";
+                    rakuten_theme = "gray";
+                    rakuten_border = "off";
+                    rakuten_auto_mode = "on";
+                    rakuten_genre_title = "off";
+                    rakuten_recommend = "on";
+                    rakuten_ts = "1769353251239";
+                </script>
+                <script type="text/javascript"
+                    src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
+            </div>
+        </div>
+
         {{-- よくある質問 --}}
         <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 md:p-10 mb-8 border border-gray-100">
             <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">よくある質問</h2>
@@ -322,6 +740,30 @@
                 <div class="border-l-4 border-purple-500 pl-6 py-4 bg-gradient-to-r from-purple-50/30 to-transparent rounded-r-xl transition-all">
                     <h3 class="font-bold text-gray-800 mb-2">Q. 損益分岐点比率はどれくらいを目指すべきですか？</h3>
                     <p class="text-gray-600 leading-relaxed">一般的に、現役の売上高に対する損益分岐点売上高の比率（損益分岐点比率）が80%以下であれば優良企業、90%を超えると危険水域と言われます。景気変動への耐性をつけるために、まずは比率を下げ、安全余裕（100% - 比率）を広げることを目指しましょう。</p>
+                </div>
+                <div class="border-l-4 border-purple-500 pl-6 py-4 bg-gradient-to-r from-blue-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 「安全余裕率」とは何ですか？</h3>
+                    <p class="text-gray-600 leading-relaxed">現在の売上が損益分岐点をどれだけ上回っているかを示す指標です。計算式は「(売上 - 損益分岐点売上) ÷ 売上 × 100」。例えば売上1,000万円、損益分岐点800万円なら安全余裕率20%。この比率が高いほど、景気変動や予期せぬコスト増加に対する耐性が強いです。</p>
+                </div>
+                <div class="border-l-4 border-indigo-500 pl-6 py-4 bg-gradient-to-r from-indigo-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. サブスクリプションビジネスの損益分岐点は？</h3>
+                    <p class="text-gray-600 leading-relaxed">サブスクリプションビジネスの場合、「月額料金 - 顧客あたりの変動費」を貢献利益とし、固定費をそれで割ることで「必要顧客数」が算出されます。ただし、解約率（チャーンレート）を考慮し、「毎月何人の新規顧客が必要か」も合わせて計算する必要があります。</p>
+                </div>
+                <div class="border-l-4 border-purple-500 pl-6 py-4 bg-gradient-to-r from-purple-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 損益分岐点を下げるための優先順位は？</h3>
+                    <p class="text-gray-600 leading-relaxed">優先順位は「①固定費削減」「②変動費削減」「③価格引き上げ」です。固定費削減はリスク耐性を直接高め、変動費削減は利益率を向上させます。価格引き上げは効果的ですが、顧客離れのリスクがあるため最後の手段とします。</p>
+                </div>
+                <div class="border-l-4 border-purple-500 pl-6 py-4 bg-gradient-to-r from-blue-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 「限界利益率」と「粗利率」の違いは？</h3>
+                    <p class="text-gray-600 leading-relaxed">ほぼ同じ意味です。限界利益率は管理会計用語、粗利率は会計用語として使われます。どちらも「販売価格 - 変動費」を販売価格で割った値で、「1個売るごとに固定費回収に貢献できる割合」を示します。この比率が高いほど、少ない販売数で黒字化できます。</p>
+                </div>
+                <div class="border-l-4 border-indigo-500 pl-6 py-4 bg-gradient-to-r from-indigo-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. キャッシュフローと損益分岐点の関係は？</h3>
+                    <p class="text-gray-600 leading-relaxed">損益分岐点を超えても、売上代金の回収が遅れれば現金不足になります。「黒字でも現金がない」状態を防ぐため、損益計算とキャッシュフロー計算の両方を管理することが重要です。特にBtoBビジネスでは、支払サイトが長いため注意が必要です。</p>
+                </div>
+                <div class="border-l-4 border-purple-500 pl-6 py-4 bg-gradient-to-r from-purple-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 新規事業で損益分岐点を使うタイミングは？</h3>
+                    <p class="text-gray-600 leading-relaxed">事業計画の段階で必ず計算しましょう。「月間何個売れば黒字になるか」を事前に把握し、その数字が現実的かどうかで事業の採算性を判断します。「月間1,000個必要」とわかれば、それが達成可能かを検討できます。不可能なら、事業計画を見直す必要があります。</p>
                 </div>
             </div>
         </div>

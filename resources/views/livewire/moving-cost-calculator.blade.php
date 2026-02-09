@@ -12,6 +12,81 @@
     <x-slot name="title">{{ $title }}</x-slot>
     <x-slot name="description">{{ $description }}</x-slot>
 
+    {{-- 構造化データ --}}
+    <x-slot name="structuredData">
+        <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'SoftwareApplication',
+                    'name' => '引越し費用計算シミュレーター',
+                    'description' => '移動距離、間取り、階数、エレベーターの有無、時期から引越し費用の概算を自動算出。繁忙期の割増料金や梱包サービスなどのオプション費用も網羅。',
+                    'url' => url()->current(),
+                    'applicationCategory' => 'LifestyleApplication',
+                    'operatingSystem' => 'Any',
+                    'offers' => [
+                        '@type' => 'Offer',
+                        'price' => '0',
+                        'priceCurrency' => 'JPY'
+                    ],
+                    'featureList' => [
+                        '引越し費用概算',
+                        '繁忙期割増計算',
+                        'オプション費用算出',
+                        '時期別料金比較'
+                    ]
+                ],
+                [
+                    '@type' => 'BreadcrumbList',
+                    'itemListElement' => [
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 1,
+                            'name' => 'ホーム',
+                            'item' => url('/')
+                        ],
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 2,
+                            'name' => '引越し費用計算'
+                        ]
+                    ]
+                ],
+                [
+                    '@type' => 'FAQPage',
+                    'mainEntity' => [
+                        [
+                            '@type' => 'Question',
+                            'name' => '「繁忙期」と「通常期」でどれくらい金額が変わりますか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '一般的に繁忙期（3月〜4月）は通常期（5月〜2月）に比べて、料金が1.5倍から2倍程度に跳ね上がります。特に土日の午前中などは予約が埋まりやすく、さらに高額になる傾向があります。費用を抑えたい場合は、4月中旬以降への延期や、3月初旬までの前倒しを検討してください。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => 'エレベーターがない建物の割増しは厳しいですか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '階数が上がるごとに作業員の人数を増やしたり、階段運搬の手間（養生、安全性確保）が発生するため、2階以上で階段作業がある場合は数千円から1万円程度の加算が一般的です。5階建てのエレベーターなし物件などは、追加料金が膨らむ可能性が高いため注意が必要です。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '一括見積もりサイトを使うメリットとデメリットは？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'メリットは、複数業者の価格を競わせることで確実に安くなる（相場より低くなる）ことです。デメリットは、登録直後から大量の電話がかかってくる点です。まずは本シミュレーターのようなツールで「自分の相場」を知った上で、特定の数社に絞って個別に連絡を取るのも一つの手です。'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+        </script>
+    </x-slot>
+
     <div class="relative z-10 max-w-6xl mx-auto px-4">
 
         {{-- Breadcrumb --}}
@@ -284,6 +359,193 @@
                     </div>
                 </div>
                 <p class="text-[10px] text-gray-400 mt-2">※指数は1.0を通常期の平均とした場合の倍率イメージです。</p>
+            </div>
+        </div>
+
+        {{-- 詳細説明セクション --}}
+        <x-content-section
+            title="引越し費用計算シミュレーターとは？"
+            icon="info"
+            category-color="cyan">
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                引越し費用計算シミュレーターは、移動距離、間取り、階数、エレベーターの有無、時期から引越し費用の概算を自動算出する無料ツールです。
+                繁忙期の割増料金や梱包サービスなどのオプション費用も網羅し、適正価格を把握できます。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                引越し料金は「基本料金（距離・荷物量）」「時期による割増」「建物条件（階数・エレベーター）」「オプションサービス」の4要素で決まります。
+                特に3月〜4月の繁忙期は通常期の1.5〜2倍に跳ね上がるため、時期選びが最も重要です。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                「業者を呼ぶ前に相場観を持つ」ことで、交渉を有利に進められます。
+                損をしない「適正価格」を知って、新生活の予算を正確に把握しましょう。
+            </p>
+        </x-content-section>
+
+        {{-- 重要用語解説 --}}
+        <x-content-section
+            title="知っておきたい重要用語"
+            icon="book"
+            category-color="cyan">
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <x-term-definition
+                    term="繁忙期と通常期"
+                    category-color="cyan">
+                    繁忙期は3月〜4月の進学・就職シーズン。引越し需要が集中し、料金は通常期の1.5〜2倍に跳ね上がる。
+                    通常期は5月〜2月。比較的落ち着いており、平日の午後便などは交渉で安くなりやすい。
+                    可能であれば4月中旬以降にずらすことで、数万円単位で節約できる可能性が高い。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="単身パック"
+                    category-color="cyan">
+                    専用のコンテナ（カゴ台車）に収まる分だけを運ぶ定額制サービス。コンテナ1本あたり◯万円と決まっている。
+                    大型家具や家電がない単身者向け。荷物が少なければ通常の引越しより大幅に安くなる。
+                    ただし、大型家具がある場合はカゴからはみ出し、結局高くなることもあるため事前確認が必要。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="混載便とチャーター便"
+                    category-color="cyan">
+                    混載便は他人の荷物と一緒にトラックに積んで運ぶ方式。長距離引越しで最大30%程度安くなる可能性。
+                    チャーター便は自分専用のトラックで運ぶ方式。荷物が多い場合や近距離引越しで一般的。
+                    荷物が少なく、日程に余裕がある場合は混載便を検討すると節約できる。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="フリー便（時間指定なし）"
+                    category-color="cyan">
+                    作業開始時間を業者に任せる代わりに、料金が安くなるプラン。午前便・午後便より数万円安い。
+                    業者が他の作業の合間に来るため、開始時間が読めない（夕方になることも）。
+                    時間に余裕がある人には、大幅な節約になるためおすすめ。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="養生（ようじょう）"
+                    category-color="cyan">
+                    引越し作業中に建物や家具を傷つけないよう、保護材で覆うこと。プロの技術が最も発揮される部分。
+                    壁、床、エレベーター、階段などを専用シートで保護。これがないと傷や汚れのリスクが高まる。
+                    自力引越しでは養生が不十分になりがちで、後から修繕費が発生するケースも。
+                </x-term-definition>
+            </div>
+        </x-content-section>
+
+        {{-- ケーススタディ --}}
+        <x-case-study
+            title="時期をずらして繁忙期料金15万円→通常期8万円に削減"
+            category-color="cyan">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        3月末の繁忙期に引越し
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>3月末の土曜日に引越し予定</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>1K単身、距離50km</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>見積もり：15万円（繁忙期割増）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>「高いけど仕方ない」と諦めていた</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        4月中旬の通常期に変更
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>4月中旬の平日に変更</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>同じ条件（1K単身、距離50km）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>見積もり：8万円（通常期料金）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>7万円の節約に成功</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-cyan-50 rounded-xl border-l-4 border-cyan-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-cyan-700">改善のポイント：</strong>
+                    同じ条件でも、3月末の繁忙期と4月中旬の通常期では料金が約2倍の差。たった2週間ずらすだけで7万円の節約になりました。
+                    さらに平日のフリー便（時間指定なし）を選んだことで、追加で1万円の値引きも獲得。
+                    「時期選び」と「時間帯の柔軟性」が、引越し費用を大きく左右します。
+                    可能であれば4月中旬以降、または3月初旬までに前倒しすることで、大幅な節約が可能です。
+                </p>
+            </div>
+        </x-case-study>
+
+        {{-- 関連ツール --}}
+        @php
+            $relatedTools = [
+                [
+                    'name' => '給与計算',
+                    'url' => '/salary-calculator',
+                    'description' => '手取り給与を算出',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>',
+                ],
+                [
+                    'name' => 'ローン返済計算',
+                    'url' => '/loan-repayment',
+                    'description' => '住宅ローン返済計画',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>',
+                ],
+                [
+                    'name' => '退職金計算',
+                    'url' => '/retirement-planning',
+                    'description' => '老後資金をシミュレーション',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>',
+                ],
+            ];
+        @endphp
+
+        <x-related-tools :tools="$relatedTools" category-color="cyan" />
+
+        {{-- 広告（楽天ウィジェット 600x200） --}}
+        <div class="mb-8 flex justify-center opacity-80 hover:opacity-100 transition-opacity">
+            <div class="max-w-full overflow-hidden">
+                <script type="text/javascript">
+                    rakuten_design = "slide";
+                    rakuten_affiliateId = "50456315.a7115187.50456316.6028b4a0";
+                    rakuten_items = "ranking";
+                    rakuten_genreId = "0";
+                    rakuten_size = "600x200";
+                    rakuten_target = "_blank";
+                    rakuten_theme = "gray";
+                    rakuten_border = "off";
+                    rakuten_auto_mode = "on";
+                    rakuten_genre_title = "off";
+                    rakuten_recommend = "on";
+                    rakuten_ts = "1769353251239";
+                </script>
+                <script type="text/javascript"
+                    src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
             </div>
         </div>
 

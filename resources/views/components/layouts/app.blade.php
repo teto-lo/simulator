@@ -247,69 +247,6 @@
 
             {{-- メインコンテンツエリア --}}
             <main class="flex-1 min-w-0 mb-20 lg:mb-0">
-                {{-- パンくずリスト --}}
-                @if (!isset($hideBreadcrumbs) || !$hideBreadcrumbs)
-                <nav class="flex mb-8 text-sm" aria-label="Breadcrumb">
-                    <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-                        <li class="inline-flex items-center">
-                            <a href="{{ route('home') }}"
-                                class="inline-flex items-center text-gray-700 hover:text-purple-600">
-                                <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-                                </svg>
-                                ホーム
-                            </a>
-                        </li>
-                        @if (isset($breadcrumbs))
-                            @foreach ($breadcrumbs as $breadcrumb)
-                                <li>
-                                    <div class="flex items-center">
-                                        <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="m1 9 4-4-4-4" />
-                                        </svg>
-                                        @if ($breadcrumb['url'])
-                                            <a href="{{ $breadcrumb['url'] }}"
-                                                class="ms-1 text-gray-700 hover:text-purple-600 md:ms-2">{{ $breadcrumb['name'] }}</a>
-                                        @else
-                                            <span
-                                                class="ms-1 text-gray-500 md:ms-2 dark:text-gray-400">{{ $breadcrumb['name'] }}</span>
-                                        @endif
-                                    </div>
-                                </li>
-                            @endforeach
-                        @endif
-                    </ol>
-                </nav>
-                @endif
-
-                {{-- 上部広告（楽天ウィジェット 600x200） --}}
-                @if (!isset($hideTopAd) || !$hideTopAd)
-                    <div class="mb-8 flex justify-center opacity-80 hover:opacity-100 transition-opacity">
-                        <div class="max-w-full overflow-hidden">
-                            <script type="text/javascript">
-                                rakuten_design = "slide";
-                                rakuten_affiliateId = "50456315.a7115187.50456316.6028b4a0";
-                                rakuten_items = "ranking";
-                                rakuten_genreId = "0";
-                                rakuten_size = "600x200";
-                                rakuten_target = "_blank";
-                                rakuten_theme = "gray";
-                                rakuten_border = "off";
-                                rakuten_auto_mode = "on";
-                                rakuten_genre_title = "off";
-                                rakuten_recommend = "on";
-                                rakuten_ts = "1769353251239";
-                            </script>
-                            <script type="text/javascript"
-                                src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
-                        </div>
-                    </div>
-                @endif
-
                 {{-- ページコンテンツ --}}
                 {{ $slot }}
 

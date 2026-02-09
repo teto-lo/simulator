@@ -12,6 +12,81 @@
     <x-slot name="title">{{ $title }}</x-slot>
     <x-slot name="description">{{ $description }}</x-slot>
 
+    {{-- 構造化データ --}}
+    <x-slot name="structuredData">
+        <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'SoftwareApplication',
+                    'name' => '手取り給与計算ツール',
+                    'description' => '年収から所得税・住民税・社会保険料を差し引いた手取り額を瞬時に計算。転職、昇給、ライフプランの策定に役立つ精密シミュレーター。',
+                    'url' => url()->current(),
+                    'applicationCategory' => 'FinanceApplication',
+                    'operatingSystem' => 'Any',
+                    'offers' => [
+                        '@type' => 'Offer',
+                        'price' => '0',
+                        'priceCurrency' => 'JPY'
+                    ],
+                    'featureList' => [
+                        '手取り給与計算',
+                        '税金内訳表示',
+                        '社会保険料算出',
+                        '手取り率表示'
+                    ]
+                ],
+                [
+                    '@type' => 'BreadcrumbList',
+                    'itemListElement' => [
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 1,
+                            'name' => 'ホーム',
+                            'item' => url('/')
+                        ],
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 2,
+                            'name' => '手取り給与計算'
+                        ]
+                    ]
+                ],
+                [
+                    '@type' => 'FAQPage',
+                    'mainEntity' => [
+                        [
+                            '@type' => 'Question',
+                            'name' => '正確な手取り額より少なく/多く表示されるのですが？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'このシミュレーターは、社会保険料の控除（約15%）や所得税・住民税の簡易計算を行っています。実際は賞与の回数、残業代、個別の控除項目（生命保険、地震保険、iDeCo等）によって多少前後します。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '「壁」とは何のことですか？（103万、130万など）',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'パートやアルバイトの方が扶養内で働く際の基準です。103万円を超えると自身に所得税がかかり、130万円を超えると自身で社会保険に加入する必要が出てくるため、手取りが一時的に減る「働き損」が発生する場合があります。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '社会保険料はずっと同じですか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '4月から6月の3ヶ月間の給料の平均（標準報酬月額）によって、その年の9月から1年間の保険料が決まります。したがって、この時期に残業が多いと翌年1年間の社会保険料が高くなる仕組みです。'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+        </script>
+    </x-slot>
+
     <div class="relative z-10 max-w-6xl mx-auto px-4">
 
         {{-- Breadcrumb --}}
@@ -265,6 +340,216 @@
                     </div>
                     <p class="text-xs text-gray-400 mt-2">月額目安: ¥504,000</p>
                 </div>
+            </div>
+        </div>
+
+        {{-- 詳細説明セクション --}}
+        <x-content-section
+            title="手取り給与計算ツールとは？"
+            icon="info"
+            category-color="amber">
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                手取り給与計算ツールは、年収から所得税・住民税・社会保険料を差し引いた「実際に使えるお金」を瞬時に算出する無料ツールです。
+                転職、昇給、ライフプランの策定に役立ちます。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                「年収500万円」と言われても、実際に手元に残るのは約395万円程度。約100万円以上が税金や社会保険料として引かれます。
+                この「見えない差」を知ることが、賢いライフプランの第一歩です。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                「手取りっていくら？」を知らずに家購入や結婚を決めるのは危険。
+                本当の収入を把握して、安心して人生の大きな決断をしましょう。
+            </p>
+        </x-content-section>
+
+        {{-- 重要用語解説 --}}
+        <x-content-section
+            title="知っておきたい重要用語"
+            icon="book"
+            category-color="amber">
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <x-term-definition
+                    term="手取り給与（可処分所得）"
+                    category-color="amber">
+                    額面給与から所得税、住民税、社会保険料を差し引いた、実際に使えるお金。
+                    一般的には額面の75～80%程度が手取りとなる。年収が高いほど手取り率は低下。
+                    家計管理やローン返済計画は、この手取り額を基準に立てるべき。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="累進課税"
+                    category-color="amber">
+                    所得が高いほど税率が上がる仕組み。日本の所得税は5%から45%までの7段階。
+                    例：年収195万円以下は5%、330万円超は20%、695万円超は23%など。
+                    「昇給したのに手取りがあまり増えない」のは、この累進課税が原因。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="社会保険料（健康保険・年金）"
+                    category-color="amber">
+                    健康保険、厚生年金、雇用保険の合計。給与の約14～15%（会社折半後）が目安。
+                    将来の年金受給や医療費の備えとして強制的に天引きされる。
+                    4〜6月の給与平均で翌年1年間の保険料が決定するため、この時期の残業に注意。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="103万円の壁・130万円の壁"
+                    category-color="amber">
+                    パート・アルバイトが扶養内で働く際の収入の壁。103万円超で所得税が発生。
+                    130万円超で自分で社会保険に加入する必要があり、手取りが減る「働き損」が発生。
+                    2018年からは「150万円の壁」も登場。配偶者特別控除の基準。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="年末調整と確定申告"
+                    category-color="amber">
+                    年末調整は会社が行う税金の精算。会社員は原則これで完結。
+                    確定申告は個人が税務署に提出する税金の申告書。医療費控除、住宅ローン控除、副業所得などで必要。
+                    確定申告することで、払いすぎた税金が還付される場合もある。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="標準報酬月額"
+                    category-color="amber">
+                    社会保険料を計算するための基準となる月給。4～6月の給与平均で決定される。
+                    この3ヶ月に残業が多いと、翌年1年間の社会保険料が高くなる。逆に少ないと保険料は安くなる。
+                    昇給や降給があった場合も、この時期の給与が基準となるため、年収全体への影響が大きい。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="配偶者控除・配偶者特別控除"
+                    category-color="amber">
+                    配偶者の年収が一定以下の場合に受けられる所得控除。配偶者控除は年収103万円以下、配偶者特別控除は150万円以下が対象。
+                    控除額は最大38万円で、所得税・住民税が軽減される。2018年の改正で「150万円の壁」が新設された。
+                    共働き世帯が増える中、この控除の活用が家計の手取りを左右する重要なポイント。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="ふるさと納税の上限額"
+                    category-color="amber">
+                    年収や家族構成によって決まる、ふるさと納税で控除を受けられる上限額。年収500万円の独身なら約6万円が目安。
+                    上限を超えて寄付しても控除されないため、事前に計算することが重要。総務省のサイトで簡易計算できる。
+                    返礼品を考慮すると、実質2,000円の負担で数万円分の商品が手に入るため、活用しないと損。
+                </x-term-definition>
+            </div>
+        </x-content-section>
+
+        {{-- ケーススタディ --}}
+        <x-case-study
+            title="転職時の手取り比較で年額50万円の差を発見"
+            category-color="amber">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        額面年収だけで比較
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>A社：年収550万円提示</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>B社：年収500万円提示</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>「50万円高いA社に決定！」</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>実際の手取り差：未確認</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        手取り額で比較
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>A社：手取り約430万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>B社：手取り約395万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>実際の差はたった35万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>B社の福利厚生も考慮して再検討</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-amber-50 rounded-xl border-l-4 border-amber-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-amber-700">改善のポイント：</strong>
+                    額面年収の差は50万円でも、手取りで見ると実際の差は35万円程度。税金や社会保険料が差し引かれるため、見かけの差は縮小します。
+                    さらにB社には住宅手当や家族手当などの福利厚生が充実していたため、総合的にはB社の方が有利と判明。
+                    「額面」だけでなく「手取り」と「福利厚生」を総合的に判断することが重要です。
+                </p>
+            </div>
+        </x-case-study>
+
+        {{-- 関連ツール --}}
+        @php
+            $relatedTools = [
+                [
+                    'name' => '退職金計算',
+                    'url' => '/retirement-planning',
+                    'description' => '老後資金をシミュレーション',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>',
+                ],
+                [
+                    'name' => 'ローン返済計算',
+                    'url' => '/loan-repayment',
+                    'description' => '住宅ローン返済計画',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>',
+                ],
+                [
+                    'name' => 'NISA・iDeCo計算',
+                    'url' => '/nisa-ideco',
+                    'description' => '資産形成をシミュレーション',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>',
+                ],
+            ];
+        @endphp
+
+        <x-related-tools :tools="$relatedTools" category-color="amber" />
+
+        {{-- 広告（楽天ウィジェット 600x200） --}}
+        <div class="mb-8 flex justify-center opacity-80 hover:opacity-100 transition-opacity">
+            <div class="max-w-full overflow-hidden">
+                <script type="text/javascript">
+                    rakuten_design = "slide";
+                    rakuten_affiliateId = "50456315.a7115187.50456316.6028b4a0";
+                    rakuten_items = "ranking";
+                    rakuten_genreId = "0";
+                    rakuten_size = "600x200";
+                    rakuten_target = "_blank";
+                    rakuten_theme = "gray";
+                    rakuten_border = "off";
+                    rakuten_auto_mode = "on";
+                    rakuten_genre_title = "off";
+                    rakuten_recommend = "on";
+                    rakuten_ts = "1769353251239";
+                </script>
+                <script type="text/javascript"
+                    src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
             </div>
         </div>
 

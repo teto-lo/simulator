@@ -12,6 +12,81 @@
     <x-slot name="title">{{ $title }}</x-slot>
     <x-slot name="description">{{ $description }}</x-slot>
 
+    {{-- 構造化データ --}}
+    <x-slot name="structuredData">
+        <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'SoftwareApplication',
+                    'name' => 'ROI計算シミュレーター',
+                    'description' => 'マーケティング、設備投資、資産運用。あらゆる投資の採算性を「ROI（投資利益率）」で数値化。投資額、売上、コストから正確なパフォーマンスを導き出します。',
+                    'url' => url()->current(),
+                    'applicationCategory' => 'BusinessApplication',
+                    'operatingSystem' => 'Any',
+                    'offers' => [
+                        '@type' => 'Offer',
+                        'price' => '0',
+                        'priceCurrency' => 'JPY'
+                    ],
+                    'featureList' => [
+                        'ROI自動計算',
+                        '純利益表示',
+                        '損益分岐点表示',
+                        '投資判断アドバイス'
+                    ]
+                ],
+                [
+                    '@type' => 'BreadcrumbList',
+                    'itemListElement' => [
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 1,
+                            'name' => 'ホーム',
+                            'item' => url('/')
+                        ],
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 2,
+                            'name' => 'ROI計算シミュレーター'
+                        ]
+                    ]
+                ],
+                [
+                    '@type' => 'FAQPage',
+                    'mainEntity' => [
+                        [
+                            '@type' => 'Question',
+                            'name' => 'ROIが高いほど、絶対に良い投資と言えますか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'ROIが高いことは非常に魅力的ですが、それだけで決めるのは危険です。「投資金額の規模（10万円でROI400%より1億円でROI50%の方が利益額は大きい）」や「投資リスク（不確実性）」、「投資回収にかかる期間」も併せて考慮する必要があります。一般的に、高いROIが見込まれるものほどリスクも高くなる傾向があります。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => 'ROIとROASの違いは具体的に何ですか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'ROI（Return On Investment）は「利益」をベースに投資対効果を見る指標です。ビジネス全体の成功可否を判断するのに使われます。対してROAS（Return On Advertising Spend）は「売上」をベースに広告費の効果を見ます。例えば、「ROASは高いけれど、原価や人件費を含めたROIは赤字だった」というケースもあるため、両方を管理することが不可欠です。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => 'ROIの計算に人件費は含めるべきですか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'より精密なROIを算出するためには、外部への支払いだけでなく、そのプロジェクトに費やした社内スタッフの人件費（時間コスト）を「投資額」または「コスト」に含めるべきです。いわゆる「見えないコスト」を可視化することで、本当の意味での効率化が測れます。'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+        </script>
+    </x-slot>
+
     <div class="relative z-10 max-w-6xl mx-auto px-4">
 
         {{-- Breadcrumb --}}
@@ -292,6 +367,352 @@
             </div>
         </div>
 
+        {{-- 詳細説明セクション --}}
+        <x-content-section
+            title="ROI計算シミュレーターとは？"
+            icon="info"
+            category-color="purple">
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                ROI計算シミュレーターは、投資額、売上高、運用コストから「ROI（Return On Investment：投資利益率）」を自動計算する無料ツールです。
+                ROIは「投資した金額に対して、どれだけの利益が得られたか」をパーセントで表す指標で、
+                ビジネスの意思決定において最も重要なパフォーマンス指標の一つです。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                計算式は「(売上 - コスト - 投資額) ÷ 投資額 × 100」で、例えば100万円投資して150万円の売上、
+                30万円のコストがかかった場合、ROIは20%となります。
+                ROI 100%以上で「投資額以上の利益が得られた」、マイナスの場合は赤字を意味します。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                このツールでは、Web広告、設備投資、不動産投資、システム導入など、あらゆる投資の採算性を客観的に判断できます。
+                「このプロジェクトに予算を割り当てるべきか？」「複数の案件のうち、どれを優先すべきか？」
+                といった経営判断を、感覚ではなく数値で行うための強力なツールです。
+            </p>
+        </x-content-section>
+
+        {{-- 重要用語解説 --}}
+        <x-content-section
+            title="知っておきたい重要用語"
+            icon="book"
+            category-color="purple">
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <x-term-definition
+                    term="ROI（Return On Investment）"
+                    category-color="purple">
+                    投資利益率。投資した金額に対してどれだけの利益が得られたかをパーセントで表す指標。
+                    計算式は「(利益 ÷ 投資額) × 100」。ROI 100%以上で投資額以上のリターンが得られたことを意味する。
+                    ビジネスの成否を判断する最も基本的な指標で、業界を問わず広く使われる。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="ROAS（Return On Advertising Spend）"
+                    category-color="purple">
+                    広告費回収率。広告費に対する売上の割合を示す指標で、「売上」ベースで計算する点がROIと異なる。
+                    計算式は「売上 ÷ 広告費 × 100」。ROAS 300%なら1円の広告費で3円の売上が得られたことを意味する。
+                    マーケティング施策の効果測定に特化した指標。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="損益分岐点（BEP）"
+                    category-color="purple">
+                    売上とコストがちょうど釣り合う点。この点を超えると利益が出始め、下回ると赤字になる。
+                    計算式は「固定費 ÷ (売上 - 変動費)」。新規事業や店舗を始める際に「いくら売れば黒字化するか」を把握するために使われる。
+                    目標設定や価格決定の基準としても重要。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="LTV（Life Time Value）"
+                    category-color="purple">
+                    顧客生涯価値。一人の顧客が取引期間全体を通じてもたらす総利益。
+                    サブスクリプションビジネスやリピート購入が多い業界では、初回購入のROIがマイナスでも、
+                    LTVを考慮すれば十分に採算が取れるケースがある。顧客維持率やリピート率と密接に関連する指標。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="CPA（Cost Per Acquisition）"
+                    category-color="purple">
+                    顧客獲得単価。一人の顧客を獲得するためにかかった平均コスト。
+                    計算式は「広告費 ÷ コンバージョン数」。CPAが低いほど効率的に顧客を獲得できていることを意味する。
+                    商品利益を超えないようにCPAを管理することが、健全なビジネス運営の基本。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="回収期間（Payback Period）"
+                    category-color="purple">
+                    投資した金額を利益で回収するまでにかかる期間。例えば100万円投資して毎月20万円の利益が出るなら、5ヶ月で回収。
+                    回収期間が短いほどリスクが低く、追加投資の判断がしやすい。
+                    ROIと併せて確認することで、より立体的な投資判断が可能になる。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="機会費用（Opportunity Cost）"
+                    category-color="purple">
+                    ある選択をすることで失われる、他の選択肢から得られたはずの利益。
+                    例えば、A案（ROI 150%）とB案（ROI 200%）があり、A案を選んだ場合、B案で得られたはずの差分が機会費用。
+                    複数の投資案を比較する際、ROIだけでなく機会費用も考慮することで、最適な意思決定ができる。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="スケーラビリティ（拡張性）"
+                    category-color="purple">
+                    投資を増やしたときに、同じROIを維持できるかどうか。
+                    例えば広告費10万円でROI 200%だった場合、100万円に増やしても同ROIを維持できればスケーラビリティが高い。
+                    市場飽和や競合の参入で、投資を増やすとROIが低下するケースも多いため、注意が必要。
+                </x-term-definition>
+            </div>
+        </x-content-section>
+
+        {{-- ケーススタディ --}}
+        <x-case-study
+            title="Web広告でROI 250%を達成したマーケティング施策"
+            category-color="purple">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        広告費をかけても赤字状態
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>月間広告費：50万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>売上：60万円（ROAS 120%）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>原価・運用コスト：30万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>純利益：-20万円（ROI -40%）</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        LP改善＋ターゲティング最適化
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>月間広告費：50万円（同額）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>売上：150万円（ROAS 300%）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>原価・運用コスト：25万円（効率化）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>純利益：+75万円（ROI 250%）</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-purple-50 rounded-xl border-l-4 border-purple-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-purple-700">改善のポイント：</strong>
+                    ROI計算で「売上は伸びているのに利益が出ていない」という問題が明確になりました。
+                    LPのCVRを改善することで同じ広告費でも売上が2.5倍に増加。さらに、不要なキーワードを除外してターゲティングを絞り込んだことで、
+                    無駄なコストを削減。結果、赤字から黒字転換し、ROI 250%を達成しました。
+                    「ROASは高くてもROIがマイナス」という状況を避けるためには、両方の指標を常にモニタリングすることが重要です。
+                </p>
+            </div>
+        </x-case-study>
+        
+        <x-case-study
+            title="ケース2: 設備投資で生産性が2倍に向上"
+            category-color="purple">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        手作業で生産性が低い
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>月間生産量：1,000個（人件費500万円）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>売上：1,500万円（単価15,000円）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>原材料費：300万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>純利益：700万円</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        自動化設備導入（1,000万円投資）
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>月間生産量：2,000個（人件費300万円に削減）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>売上：3,000万円（単価15,000円）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>原材料費：600万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>純利益：2,100万円（初月はROI 140%）</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-purple-50 rounded-xl border-l-4 border-purple-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-purple-700">改善のポイント：</strong>
+                    1,000万円の設備投資で、月間利益が700万円から2,100万円に増加。増分利益1,400万円で計算すると、
+                    初月のROIは140%。回収期間は約1ヶ月で、2ヶ月目以降は全て純利益になります。
+                    人件費削減と生産量増加のダブル効果で、追加投資の判断基準となるROIを大幅に上回りました。
+                </p>
+            </div>
+        </x-case-study>
+        
+        <x-case-study
+            title="ケース3: SaaS事業でLTVを考慮したROI判断"
+            category-color="purple">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        初回ROIのみで判断
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>顧客獲得費：30,000円/人</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>初月売上：10,000円（月額プラン）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>初月ROI：-67%（赤字）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>「赤字だから広告を止める」と判断</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        LTVを考慮したROI計算
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>顧客獲得費：30,000円/人</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>平均継続期間：12ヶ月</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>LTV：120,000円（12ヶ月 × 10,000円）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>LTVベースROI：300%（黒字）</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-purple-50 rounded-xl border-l-4 border-purple-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-purple-700">改善のポイント：</strong>
+                    サブスクリプションビジネスでは、初月ROIだけで判断すると誤った意思決定になります。
+                    LTV（顧客生涯価値）を考慮すると、初月は赤字でも長期的には十分な利益が得られることがわかります。
+                    「顧客維持率」を高めるCRM施策に投資することで、LTVがさらに向上し、ROIも改善されます。
+                </p>
+            </div>
+        </x-case-study>
+
+        {{-- 関連ツール --}}
+        @php
+            $relatedTools = [
+                [
+                    'name' => '広告予算シミュレーター',
+                    'url' => '/ad-cost',
+                    'description' => '広告費の費用対効果を詳細にシミュレーション',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>',
+                ],
+                [
+                    'name' => 'NISA・iDeCoシミュレーター',
+                    'url' => '/nisa-ideco',
+                    'description' => '個人投資の長期ROIを計算',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>',
+                ],
+                [
+                    'name' => '損益分岐点計算',
+                    'url' => '/break-even',
+                    'description' => '黒字化に必要な売上を算出',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>',
+                ],
+            ];
+        @endphp
+
+        <x-related-tools :tools="$relatedTools" category-color="purple" />
+
+        {{-- 広告（楽天ウィジェット 600x200） --}}
+        <div class="mb-8 flex justify-center opacity-80 hover:opacity-100 transition-opacity">
+            <div class="max-w-full overflow-hidden">
+                <script type="text/javascript">
+                    rakuten_design = "slide";
+                    rakuten_affiliateId = "50456315.a7115187.50456316.6028b4a0";
+                    rakuten_items = "ranking";
+                    rakuten_genreId = "0";
+                    rakuten_size = "600x200";
+                    rakuten_target = "_blank";
+                    rakuten_theme = "gray";
+                    rakuten_border = "off";
+                    rakuten_auto_mode = "on";
+                    rakuten_genre_title = "off";
+                    rakuten_recommend = "on";
+                    rakuten_ts = "1769353251239";
+                </script>
+                <script type="text/javascript"
+                    src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
+            </div>
+        </div>
+
         {{-- よくある質問 --}}
         <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 md:p-10 mb-8 border border-gray-100">
             <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">よくある質問</h2>
@@ -319,6 +740,26 @@
                 <div class="border-l-4 border-red-500 pl-6 py-4 bg-gradient-to-r from-red-50/30 to-transparent rounded-r-xl transition-all">
                     <h3 class="font-bold text-gray-800 mb-2">Q. CRMやブランディングなど、直接売上に繋がらない施策のROIは？</h3>
                     <p class="text-gray-600">これらは短期的な利益算出が難しいため、「LTV（生涯価値）の向上分」を売上の代わりに置いたり、長期的なスパンでのROIを測定します。無理に短期ROIを求めると、長期的な競争力を削ぐ「目先の利益追求」に陥るリスクがあるため注意が必要です。</p>
+                </div>
+                <div class="border-l-4 border-purple-500 pl-6 py-4 bg-gradient-to-r from-amber-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. ROIがマイナスでも続けるべきケースはありますか？</h3>
+                    <p class="text-gray-600">「市場シェア獲得」や「ブランド認知向上」など、戦略的な目的がある場合、短期的なマイナスROIを許容することがあります。ただし、「いつまで」「どれだけ」赤字を許容するかを明確に定め、定期的に見直すことが重要です。「ずっと赤字」は危険です。</p>
+                </div>
+                <div class="border-l-4 border-orange-500 pl-6 py-4 bg-gradient-to-r from-orange-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 複数の投資案がある場合、ROIだけで決めていいですか？</h3>
+                    <p class="text-gray-600">ROIは重要ですが、「投資金額の規模」「リスク」「回収期間」「スケーラビリティ（拡張性）」も併せて考慮すべきです。10万円でROI 400%より、1億円でROI 50%の方が利益総額は大きいです。また、高ROIでもリスクが高ければ慣重に判断すべきです。</p>
+                </div>
+                <div class="border-l-4 border-red-500 pl-6 py-4 bg-gradient-to-r from-red-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. ROIを改善するための最も効果的な方法は？</h3>
+                    <p class="text-gray-600">「売上を伸ばす」か「コストを下げる」の2方向がありますが、一般的には「無駄なコストを削減する」方が即効性があります。特に、効果の低い広告キーワードや、使われていないツールのサブスクを解約するなど、「見えないコスト」を可視化することが重要です。</p>
+                </div>
+                <div class="border-l-4 border-purple-500 pl-6 py-4 bg-gradient-to-r from-amber-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 人件費をROI計算に含めると、ほとんどのプロジェクトが赤字になりませんか？</h3>
+                    <p class="text-gray-600">確かに人件費を含めるとROIは低くなりますが、それが「正確なコスト」です。人件費を無視すると、「外注すればコストがかかるのに、社内でやればタダ」という誤解が生まれます。正しいコストを把握することで、「外注すべきか、内製すべきか」の判断が正確になります。</p>
+                </div>
+                <div class="border-l-4 border-orange-500 pl-6 py-4 bg-gradient-to-r from-orange-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. ROI計算で「減価償却」は考慮すべきですか？</h3>
+                    <p class="text-gray-600">設備投資などの固定資産の場合、減価償却をコストに含めるべきです。例えば1,000万円の設備を5年で減価償却するなら、年間200万円をコストとして計上します。これにより、「設備の更新時期」を見誤らないようになります。</p>
                 </div>
             </div>
         </div>

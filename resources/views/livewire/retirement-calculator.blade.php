@@ -12,6 +12,81 @@
     <x-slot name="title">{{ $title }}</x-slot>
     <x-slot name="description">{{ $description }}</x-slot>
 
+    {{-- 構造化データ --}}
+    <x-slot name="structuredData">
+        <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'SoftwareApplication',
+                    'name' => '老後資金計算シミュレーター',
+                    'description' => '現在の年齢、年金額、理想の生活費から、老後に必要な総資金と毎月の必要積立額をシミュレーション。資産運用による「複利の効果」も含めて精密に試算します。',
+                    'url' => url()->current(),
+                    'applicationCategory' => 'FinanceApplication',
+                    'operatingSystem' => 'Any',
+                    'offers' => [
+                        '@type' => 'Offer',
+                        'price' => '0',
+                        'priceCurrency' => 'JPY'
+                    ],
+                    'featureList' => [
+                        '老後必要資金計算',
+                        '年金不足額算出',
+                        '複利効果試算',
+                        '毎月積立額提示'
+                    ]
+                ],
+                [
+                    '@type' => 'BreadcrumbList',
+                    'itemListElement' => [
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 1,
+                            'name' => 'ホーム',
+                            'item' => url('/')
+                        ],
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 2,
+                            'name' => '老後資金計算'
+                        ]
+                    ]
+                ],
+                [
+                    '@type' => 'FAQPage',
+                    'mainEntity' => [
+                        [
+                            '@type' => 'Question',
+                            'name' => '「老後2000万円問題」は今でも有効な数字ですか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '2000万円という数字は「夫65歳以上、妻60歳以上の無職世帯の平均的な不足額」に基づいたものです。住宅ローンの有無、住む地域（賃貸か持ち家か）、健康状態によって、必要な額は500万円で済む人もいれば5000万円必要な人もいます。このシミュレーターで「自分だけの不足額」を出すことが重要です。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '年金受給額がいくらになるか分かりません。',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'まずは「ねんきん定期便」を確認するのが確実です。ざっくりとした目安としては、年収500万円程度の会社員（厚生年金）であれば月15〜18万円程度、自営業者（国民年金のみ）であれば月6〜7万円程度と言われています。iDeCoや企業型DCの上乗せ分も忘れないように入力してください。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '資産運用のリターン（％）はどれくらいで設定すべきですか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'インデックス投資中心であれば「3％〜5％」程度でシミュレーションするのが現実的かつ健全です。期待しすぎてハイリスクな商品に手を出すのは老後資金形成においては危険です。逆に、銀行預金のみであれば「0％」に近い数値に設定し、どれくらいのスピードでお金が減るかを確認しましょう。'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+        </script>
+    </x-slot>
+
     <div class="relative z-10 max-w-6xl mx-auto px-4">
 
         {{-- Breadcrumb --}}
@@ -305,6 +380,349 @@
             </div>
         </div>
 
+        {{-- 詳細説明セクション --}}
+        <x-content-section
+            title="老後資金計算シミュレーターとは？"
+            icon="info"
+            category-color="emerald">
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                老後資金計算シミュレーターは、現在の年齢、年金額、理想の生活費から、老後に必要な総資金と毎月の必要積立額を精密に算出する無料ツールです。
+                「老後2000万円問題」はあくまで平均値。あなただけの答えを見つけましょう。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                計算では、退職後の生活費から年金受給額を差し引いた「毎月の不足額」を算出。それを退職後の年数分積み上げて、必要総額を導き出します。
+                さらに、現在の資産と毎月の積立を複利運用した場合の将来価値も試算します。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                「2000万円で足りるか？」に、あなただけの答えを。将来を可視化して、今を安心して生きよう。
+                人生100年時代、早めの準備が安心を生みます。
+            </p>
+        </x-content-section>
+
+        {{-- 重要用語解説 --}}
+        <x-content-section
+            title="知っておきたい重要用語"
+            icon="book"
+            category-color="emerald">
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <x-term-definition
+                    term="老後2000万円問題"
+                    category-color="emerald">
+                    2019年に金融庁が発表した報告書で、夫婦の老後30年間で約2000万円が不足すると試算された。
+                    あくまで平均的なモデルケースであり、個人の状況によって大きく異なる。
+                    持ち家か賃貸か、健康状態、地域などで必要額は大きく変わる。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="公的年金（国民・厚生）"
+                    category-color="emerald">
+                    国民年金は全国民共通の基礎年金で、満額で月6.5万円/月。厚生年金は会社員が加入する2階部分。
+                    厚生年金加入者は、国民年金+厚生年金の2階建てで受給。平均で15〜18万円/月程度。
+                    自営業者は国民年金のみのため、iDeCoや付加年金で上乗せが重要。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="FIRE（経済的独立・早期退職）"
+                    category-color="emerald">
+                    Financial Independence, Retire Earlyの略。40〜50代でリタイアするライフスタイル。
+                    一般的には「年間生活費の25倍の資産」を築くことが目標。（4%ルール）
+                    早期リタイアには、徹底した節約と資産運用が不可欠。年金受給までの空白期間をどう埋めるかが課題。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="4%ルール"
+                    category-color="emerald">
+                    資産を年率4%ずつ取り崩しても、30年以上資産が減らないという統計的な指標。
+                    例：5000万円の資産があれば、年間200万円（月16.7万円）を生活費に充てられる。
+                    インデックス投資で平均5〜7%のリターンを前提とした理論。実際には市場変動リスクあり。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="長生リスク"
+                    category-color="emerald">
+                    予想よりも長生きすることで、老後資金が不足するリスク。人生100年時代の現代では重要な考慮事項。
+                    女性は男性より平均寿命が長いため、特に注意が必要。100歳までの計画が推奨される。
+                    寿命を1年延ばすごとに、（月間生活費-年金）×12ヶ月分の追加資金が必要。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="マッチング拠出（企業型DC）"
+                    category-color="emerald">
+                    会社が社員のiDeCo拠出に上乗せして拠出する制度。例えば社員が月1万円拠出すれば、会社も5,000円上乗せするなど。
+                    実質的に「給与の増加」と同じ効果があり、非常にお得な制度。会社に確認し、活用できる場合は積極的に利用すべき。
+                    企業型DCの拠出分も、老後資金計算に必ず含めましょう。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="インフレリスク"
+                    category-color="emerald">
+                    物価上昇によって、同じ金額で購入できるものが減るリスク。例えば年率インフレ2%が30年続けば、現在の100万円は実質的に55万円の価値になる。
+                    銀行預金（ほぼ0%）ではインフレ負けするため、老後資金は「運用」が不可欠。
+                    インデックス投資なら、インフレを上回るリターンが期待できる。
+                </x-term-definition>
+                
+                <x-term-definition
+                    term="リバースモーゲージ"
+                    category-color="emerald">
+                    持ち家を担保に、毎月一定額を受け取るローン商品。60歳以上が対象で、死亡時に自宅を売却して返済する仕組み。
+                    老後資金不足を補う手段の一つだが、子供に家を残せない、金利が高いなどのデメリットもある。
+                    最後の手段として検討すべきで、まずは新NISAやiDeCoでの資産形成を優先すべき。
+                </x-term-definition>
+            </div>
+        </x-content-section>
+
+        {{-- ケーススタディ --}}
+        <x-case-study
+            title="新NISA活用で老後資金不足を1500万円解消"
+            category-color="emerald">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        銀行預金のみで積立
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>現在：35歳、資産100万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>月　5万円積立（運用利回り0%）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>65歳時点の資産：1,900万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>老後必要額：3,400万円 → 1,500万円不足</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        新NISAで年利5%運用
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>現在：35歳、資産100万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>月　5万円積立（運用利回り5%）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>65歳時点の資産：3,550万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>老後必要額：3,400万円 → 150万円余裕</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-emerald-50 rounded-xl border-l-4 border-emerald-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-emerald-700">改善のポイント：</strong>
+                    同じ月　5万円の積立でも、新NISAで年利5%運用することで、複利効果により30年後の資産が1,650万円増加。
+                    銀行預金では1,500万円不足だったのが、運用するだけで150万円の余裕が生まれました。
+                    「複利の力」を活用することで、同じ積立額でも大きな差が生まれます。
+                    早めに始めるほど、複利効果は大きくなります。
+                </p>
+            </div>
+        </x-case-study>
+        
+        <x-case-study
+            title="ケース2: FIRE達成のために40代で資産5,000万円築く"
+            category-color="emerald">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        通常のペースで貴重な時間を消費
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>現在：30歳、資産200万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>月　5万円積立（運用0%）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>50歳時点の資産：1,400万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>FIRE目標（5,000万円）に全く届かず</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        新NISAで年劗7%運用
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>現在：30歳、資産200万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>月　10万円積立（運用7%）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>50歳時点の資産：約5,200万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>FIRE達成！50歳でリタイア！</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-emerald-50 rounded-xl border-l-4 border-emerald-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-emerald-700">改善のポイント：</strong>
+                    月　10万円を新NISAで年劗7%運用することで、20年間で資産が5,200万円に到達。「4%ルール」で年間208万円（月約17万円）を取り崩せるため、
+                    50歳でFIRE達成。節約と複利運用の組み合わせで、早期リタイアが現実的になります。
+                    「時間を味方につける」ことが、FIRE達成の鍵です。
+                </p>
+            </div>
+        </x-case-study>
+        
+        <x-case-study
+            title="ケース3: 自営業者がiDeCoで国民年金を上乗せ"
+            category-color="emerald">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        国民年金のみで老後不安
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>現在：40歳、資産300万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>年金：月月6.5万円（国民年金のみ）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>生活費：月　20万円 → 月　13.5万円不足</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>90歳までの不足額：約4,050万円</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        iDeCoで月月6.8万円拠出
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>現在：40歳、資産300万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>iDeCoに月月6.8万円、25年間拠出（5%）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>65歳時点のiDeCo資産：約4,300万円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>老後不足をほぼ解消！</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-emerald-50 rounded-xl border-l-4 border-emerald-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-emerald-700">改善のポイント：</strong>
+                    自営業者は国民年金のみのため、厚生年金加入者より老後資金不足が大きいです。iDeCoに月月6.8万円（上限額）を拠出することで、
+                    25年間で約4,300万円の資産を築き、老後不足をほぼ解消。さらにiDeCoは所得控除で税金が戻るため、
+                    実質的な負担はさらに軽くなります。自営業者こそ、iDeCoをフル活用すべきです。
+                </p>
+            </div>
+        </x-case-study>
+
+        {{-- 関連ツール --}}
+        @php
+            $relatedTools = [
+                [
+                    'name' => '複利計算シミュレーター',
+                    'url' => '/compound-interest',
+                    'description' => '資産運用の複利効果を試算',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>',
+                ],
+                [
+                    'name' => 'NISA・iDeCo計算',
+                    'url' => '/nisa-ideco',
+                    'description' => '税優遇制度を活用した資産形成',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>',
+                ],
+                [
+                    'name' => 'ローン返済計算',
+                    'url' => '/loan-repayment',
+                    'description' => '住宅ローン返済計画',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>',
+                ],
+            ];
+        @endphp
+
+        <x-related-tools :tools="$relatedTools" category-color="emerald" />
+
+        {{-- 広告（楽天ウィジェット 600x200） --}}
+        <div class="mb-8 flex justify-center opacity-80 hover:opacity-100 transition-opacity">
+            <div class="max-w-full overflow-hidden">
+                <script type="text/javascript">
+                    rakuten_design = "slide";
+                    rakuten_affiliateId = "50456315.a7115187.50456316.6028b4a0";
+                    rakuten_items = "ranking";
+                    rakuten_genreId = "0";
+                    rakuten_size = "600x200";
+                    rakuten_target = "_blank";
+                    rakuten_theme = "gray";
+                    rakuten_border = "off";
+                    rakuten_auto_mode = "on";
+                    rakuten_genre_title = "off";
+                    rakuten_recommend = "on";
+                    rakuten_ts = "1769353251239";
+                </script>
+                <script type="text/javascript"
+                    src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
+            </div>
+        </div>
+
         {{-- よくある質問 --}}
         <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 md:p-10 mb-8 border border-gray-100">
             <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">よくある質問</h2>
@@ -332,6 +750,30 @@
                 <div class="border-l-4 border-red-500 pl-6 py-4 bg-gradient-to-r from-red-50/30 to-transparent rounded-r-xl transition-all">
                     <h3 class="font-bold text-gray-800 mb-2">Q. 持ち家の場合、家賃がかからないので有利ですか？</h3>
                     <p class="text-gray-600 leading-relaxed">退職時にローンが完済されていれば、月々の支出を劇的に抑えられます。ただし、固定資産税やメンテナンス費用（外壁塗装や設備の更新）が発生するため、月々の生活費にはそれらの「積み立て分」を数万円上乗せして設定することをお勧めします。賃貸の場合は、生涯家賃がかかる前提での生活費設定が必要です。</p>
+                </div>
+                <div class="border-l-4 border-emerald-500 pl-6 py-4 bg-gradient-to-r from-emerald-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. FIRE（早期リタイア）を目指す場合の目標資産は？</h3>
+                    <p class="text-gray-600 leading-relaxed">一般的に「年間生活費の25倍」が目標とされます（4%ルール）。例えば年間240万円（月20万円）で生活するなら、6,000万円の資産が必要です。ただし、年金受給までの空白期間をどう埋めるか、医療費の増加など、リスクも考慮して余裕を持たせることが重要です。</p>
+                </div>
+                <div class="border-l-4 border-teal-500 pl-6 py-4 bg-gradient-to-r from-orange-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 「長生riスク」を避けるための対策は？</h3>
+                    <p class="text-gray-600 leading-relaxed">予想より長生きすることで資金が不足するリスクです。対策は、①100歳までの計画を立てる、②資産を運用しながら取り崩す（4%ルール）、③公的年金の繰り下げ受給（70歳まで遅らせると月額が42%増）を検討する、などがあります。特に女性は男性より平均寿命が長いため注意が必要です。</p>
+                </div>
+                <div class="border-l-4 border-red-500 pl-6 py-4 bg-gradient-to-r from-red-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. インフレ（物価上昇）は老後資金にどう影響しますか？</h3>
+                    <p class="text-gray-600 leading-relaxed">例えば年率2%のインフレが30年続けば、現在の100万円は実質的に55万円の価値になります。銀行預金（ほぼ0%）ではインフレ負けするため、老後資金は「運用」が不可欠。インデックス投資（年劗5～7%）なら、インフレを上回るリターンが期待できます。</p>
+                </div>
+                <div class="border-l-4 border-emerald-500 pl-6 py-4 bg-gradient-to-r from-emerald-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 自営業者は会社員より老後資金が必要ですか？</h3>
+                    <p class="text-gray-600 leading-relaxed">はい、自営業者は国民年金のみ（月約6.5万円）のため、厚生年金加入者（月約15～18万円）より大幅に不足します。そのため、iDeCo（月月6.8万円まで）や付加年金、国民年金基金を活用して、自分で年金を上乗せすることが不可欠です。</p>
+                </div>
+                <div class="border-l-4 border-teal-500 pl-6 py-4 bg-gradient-to-r from-orange-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 「リバースモーゲージ」は老後資金対策になりますか？</h3>
+                    <p class="text-gray-600 leading-relaxed">持ち家を担保に毎月一定額を受け取るローン商品です。老後資金不足を補う手段の一つですが、子供に家を残せない、金利が高いなどのデメリットがあります。最後の手段として検討すべきで、まずは新NISAやiDeCoでの資産形成を優先すべきです。</p>
+                </div>
+                <div class="border-l-4 border-red-500 pl-6 py-4 bg-gradient-to-r from-red-50/30 to-transparent rounded-r-xl transition-all">
+                    <h3 class="font-bold text-gray-800 mb-2">Q. 年金受給を繰り下げるとどれくらい増えますか？</h3>
+                    <p class="text-gray-600 leading-relaxed">公的年金は、65歳から75歳の間で受給開始時期を選べます、66歳以降に繰り下げると1ヶ月あたり0.7%増額。例えづ70歳まで遅らせると、65歳時点より42%増額します。長生riスク対策として有効ですが、受給開始までの生活費をどう賔うかが課題です。</p>
                 </div>
             </div>
         </div>

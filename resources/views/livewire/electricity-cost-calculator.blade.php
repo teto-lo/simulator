@@ -12,6 +12,105 @@
     <x-slot name="title">{{ $title }}</x-slot>
     <x-slot name="description">{{ $description }}</x-slot>
 
+    {{-- 構造化データ --}}
+    <x-slot name="structuredData">
+        <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@graph' => [
+                [
+                    '@type' => 'SoftwareApplication',
+                    'name' => '電気代計算ツール',
+                    'description' => '家電のワット数と使用時間から電気代を自動計算。エアコン、冷蔵庫、PCなど、あらゆる家電の電気代を一瞬で可視化し、節約プランの策定をサポート。',
+                    'url' => url()->current(),
+                    'applicationCategory' => 'UtilitiesApplication',
+                    'operatingSystem' => 'Any',
+                    'offers' => [
+                        '@type' => 'Offer',
+                        'price' => '0',
+                        'priceCurrency' => 'JPY'
+                    ],
+                    'featureList' => [
+                        '電気代自動計算',
+                        '消費電力算出',
+                        '節約アドバイス',
+                        '月間・年間コスト表示'
+                    ]
+                ],
+                [
+                    '@type' => 'BreadcrumbList',
+                    'itemListElement' => [
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 1,
+                            'name' => 'ホーム',
+                            'item' => url('/')
+                        ],
+                        [
+                            '@type' => 'ListItem',
+                            'position' => 2,
+                            'name' => '電気代計算'
+                        ]
+                    ]
+                ],
+                [
+                    '@type' => 'FAQPage',
+                    'mainEntity' => [
+                        [
+                            '@type' => 'Question',
+                            'name' => '正確な電力単価がわかりません',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'お住まいの地域の電力会社や契約プランによって異なりますが、検針票の「基本料金（燃料調整額含む）÷ 使用量」で算出できます。不明な場合は新電力目安の「31円/kWh」をご利用ください。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '「W（ワット）」と「kWh（キロワットアワー）」の違いは？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'Wは「瞬間のパワー」を表し、kWhは「そのパワーを1時間使い続けた電気の量」を表します。電気代はkWh（電気量）に対して課金されます。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '待機電力はどれくらい電気代に影響しますか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '一般的な家庭では全消費電力の約5%程度が待機電力と言われています。塵も積もれば山となるため、長期間使用しない家電はプラグを抜くのが効果的です。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => 'エアコンはこまめに消すより「つけっぱなし」が良い？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'エアコンは起動時に最も電力を消費します。30分程度の外出であれば「つけっぱなし」の方が安くなるケースが多いですが、2時間以上離れる場合は消した方がお得です。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => '節電のために最も有効な買い替え家電は？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => '一般的に「冷蔵庫」と「照明(LED化)」です。冷蔵庫は24時間稼働するため省エネ性能の差が大きく出ます。また照明も数が多いと大きな差になります。'
+                            ]
+                        ],
+                        [
+                            '@type' => 'Question',
+                            'name' => 'ソーラーパネル導入のメリット計算に使えますか？',
+                            'acceptedAnswer' => [
+                                '@type' => 'Answer',
+                                'text' => 'はい。購入電力をどれだけ削減できるかの目安を計算する際に、各家電の消費電力量を把握するツールとして役立ちます。'
+                            ]
+                        ]
+                    ]
+                ]
+            ]
+        ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+        </script>
+    </x-slot>
+
     <div class="relative z-10 max-w-6xl mx-auto px-4">
 
         {{-- Breadcrumb --}}
@@ -304,6 +403,193 @@
                         月額: 約 {{ number_format(30 / 1000 * 24 * 30 * 31) }} 円
                     </p>
                 </div>
+            </div>
+        </div>
+
+        {{-- 詳細説明セクション --}}
+        <x-content-section
+            title="電気代計算ツールとは？"
+            icon="info"
+            category-color="cyan">
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                電気代計算ツールは、家電のワット数と使用時間から電気代を自動計算する無料ツールです。
+                エアコン、冷蔵庫、PCなど、あらゆる家電の電気代を一瞬で可視化し、節約プランの策定をサポートします。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed mb-4">
+                消費電力（W）×使用時間（h）×電力単価（円/kWh）で電気代を算出。1日、月間、年間のコストを同時に表示し、長期的な節約効果を把握できます。
+                節電アドバイス機能で、消費電力の10%削減でどれだけ節約できるかも表示します。
+            </p>
+
+            <p class="text-gray-600 leading-relaxed">
+                「この家電、月にどれくらい電気代がかかってる？」という疑問を解決。
+                省エネ家電への買い替え検討や、電力会社の乗り換え比較にも活用できます。
+            </p>
+        </x-content-section>
+
+        {{-- 重要用語解説 --}}
+        <x-content-section
+            title="知っておきたい重要用語"
+            icon="book"
+            category-color="cyan">
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <x-term-definition
+                    term="消費電力（W）とkWh"
+                    category-color="cyan">
+                    W（ワット）は「瞬間のパワー」、kWh（キロワットアワー）は「電気の量」を表す。1000Wを1時間使うと1kWh。
+                    電気代はkWh単位で課金されるため、「何Wの家電を何時間使うか」が重要。
+                    例：100Wの電球を10時間使うと1kWhの電気を消費。電力単価31円/kWhなら31円の電気代。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="電力単価（円/kWh）"
+                    category-color="cyan">
+                    1kWhあたりの電気料金。地域や電力会社、契約プランによって異なるが、25～35円程度が一般的。
+                    検針票の「使用量（kWh）」と「請求額」から算出可能。燃料調整額や再エネ賦課金も含む。
+                    本ツールでは新電力目安の31円/kWhをデフォルトとしているが、実際の単価を入力するとより正確。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="待機電力"
+                    category-color="cyan">
+                    家電を使っていない時でも、コンセントに挿しっぱなしで消費される電力。テレビ、エアコン、電子レンジなどが対象。
+                    一般家庭では全消費電力の約5%程度。年間で数千円の節約になるため、長期不使用の家電はプラグを抜くのが効果的。
+                    省エネタップ付き電源タップを使うと、主電源を切るだけで待機電力をカットできる。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="エアコンの電気代"
+                    category-color="cyan">
+                    エアコンは家電の中で最も電気代がかかる機器の一つ。冷房時は500～1000W、暖房時は1000～2000W程度。
+                    起動時に最も電力を消費するため、30分程度の外出なら「つけっぱなし」がお得。2時間以上なら消す方が節約に。
+                    設定温度は夏28°C、冬20°Cが目安。1°C変えるだけで約10%の節電効果。フィルター清掃も重要。
+                </x-term-definition>
+
+                <x-term-definition
+                    term="省エネ家電への買い替え"
+                    category-color="cyan">
+                    特に「冷蔵庫」と「LED照明」は買い替え効果が高い。10年前の冷蔵庫は最新機種の約2倍の電気代。
+                    LED照明は白熱電球の約1/5の消費電力で、寿命も約10倍。初期費用は高いが、長期的には大幅な節約に。
+                    本ツールで現在の家電と省エネ家電の電気代を比較し、買い替えのメリットを試算できる。
+                </x-term-definition>
+            </div>
+        </x-content-section>
+
+        {{-- ケーススタディ --}}
+        <x-case-study
+            title="古い冷蔵庫を買い替えて年間1万円節約！"
+            category-color="cyan">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-red-100 rounded-full text-sm">Before</span>
+                        10年前の冷蔵庫を使用
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>消費電力：年間500kWh（古い機種）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>電力単価：31円/kWh</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>年間電気代：500 × 31 = 15,500円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">✗</span>
+                            <span>「冷蔵庫だけでこんなに？」と驚き</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-emerald-600 mb-4 flex items-center gap-2">
+                        <span class="px-3 py-1 bg-emerald-100 rounded-full text-sm">After</span>
+                        最新省エネ冷蔵庫に買い替え
+                    </h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>消費電力：年間250kWh（最新機種）</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>電力単価：31円/kWh</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>年間電気代：250 × 31 = 7,750円</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-emerald-500 mt-1">✓</span>
+                            <span>年間7,750円の節約！（10年で77,500円）</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 bg-cyan-50 rounded-xl border-l-4 border-cyan-500">
+                <p class="text-sm text-gray-700 leading-relaxed">
+                    <strong class="text-cyan-700">改善のポイント：</strong>
+                    冷蔵庫は24時間365日稼働するため、省エネ性能の差が電気代に大きく影響します。10年前の機種と最新機種では、消費電力が約2倍違うことも。
+                    本ツールで現在の冷蔵庫の電気代を計算し、最新機種のカタログ値と比較することで、買い替えのメリットを具体的に把握できます。
+                    買い替え費用が10万円でも、年間1万円節約できれだ10年で元が取れる計算に。
+                    特に15年以上使用している冷蔵庫は、早めの買い替えを検討する価値があります。
+                </p>
+            </div>
+        </x-case-study>
+
+        {{-- 関連ツール --}}
+        @php
+            $relatedTools = [
+                [
+                    'name' => 'アスペクト比計算',
+                    'url' => '/aspect-ratio',
+                    'description' => '画像・動画の比率算出',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>',
+                ],
+                [
+                    'name' => '請求書計算',
+                    'url' => '/invoice',
+                    'description' => '源泉徴収・消費税計算',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>',
+                ],
+                [
+                    'name' => 'ROI計算',
+                    'url' => '/roi-calculator',
+                    'description' => '投資対効果を分析',
+                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>',
+                ],
+            ];
+        @endphp
+
+        <x-related-tools :tools="$relatedTools" category-color="cyan" />
+
+        {{-- 広告（楽天ウィジェット 600x200） --}}
+        <div class="mb-8 flex justify-center opacity-80 hover:opacity-100 transition-opacity">
+            <div class="max-w-full overflow-hidden">
+                <script type="text/javascript">
+                    rakuten_design = "slide";
+                    rakuten_affiliateId = "50456315.a7115187.50456316.6028b4a0";
+                    rakuten_items = "ranking";
+                    rakuten_genreId = "0";
+                    rakuten_size = "600x200";
+                    rakuten_target = "_blank";
+                    rakuten_theme = "gray";
+                    rakuten_border = "off";
+                    rakuten_auto_mode = "on";
+                    rakuten_genre_title = "off";
+                    rakuten_recommend = "on";
+                    rakuten_ts = "1769353251239";
+                </script>
+                <script type="text/javascript"
+                    src="https://xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js?20230106"></script>
             </div>
         </div>
 

@@ -110,3 +110,75 @@
 - **質問（Q）**: 太字で目立たせる
 - **回答（A）**: 読みやすい行間とグレーの文字色（`text-gray-600`）
 
+---
+
+## 7. コンテンツ追加用Bladeコンポーネント
+
+**SEO強化のため、テキスト量を増やす際は以下の再利用可能なコンポーネントを使用してください。**
+
+### コンポーネント一覧
+
+#### `<x-content-section>`
+統一されたコンテンツセクション。詳細説明、用語解説、ケーススタディなどに使用。
+
+```blade
+<x-content-section 
+    title="セクションタイトル" 
+    icon="lightbulb"
+    category-color="blue">
+    
+    <p>コンテンツ...</p>
+    
+</x-content-section>
+```
+
+**Props**: `title` (必須), `icon` (オプション: lightbulb, chart, info, book, link), `category-color` (必須)
+
+#### `<x-info-card>`
+ポイント説明や簡潔な情報表示に使用。
+
+```blade
+<x-info-card title="カードタイトル" category-color="blue">
+    <p>説明文...</p>
+</x-info-card>
+```
+
+#### `<x-term-definition>`
+専門用語の解説に使用。
+
+```blade
+<x-term-definition term="用語名" category-color="blue">
+    <p>用語の説明...</p>
+</x-term-definition>
+```
+
+#### `<x-case-study>`
+実際の使用例・ケーススタディに使用。
+
+```blade
+<x-case-study title="ケーススタディタイトル" category-color="blue">
+    <p>事例の内容...</p>
+</x-case-study>
+```
+
+#### `<x-related-tools>`
+関連ツールの表示（内部リンク強化）。
+
+```blade
+@php
+    $relatedTools = [
+        ['name' => 'ツール名', 'url' => '/url', 'description' => '説明', 'icon' => 'SVGパス'],
+    ];
+@endphp
+<x-related-tools :tools="$relatedTools" category-color="blue" />
+```
+
+### 詳細な使用方法
+- **ガイドライン**: `CONTENT_GUIDELINES.md` を参照
+- **実装例**: `CONTENT_IMPLEMENTATION_EXAMPLES.md` を参照
+
+### 重要な注意事項
+- **必ずコンポーネントを使用する**: カスタムスタイルを直接記述しない
+- **カテゴリーカラーを統一する**: 各ツールページのカテゴリーに応じたカラーを使用
+- **デザインルールを遵守する**: このドキュメントの全ルールに従う
+

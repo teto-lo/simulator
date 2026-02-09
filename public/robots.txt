@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: http://localhost/sitemap.xml
+Sitemap: https://simulator.skr.jp/sitemap.xml
